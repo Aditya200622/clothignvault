@@ -38,7 +38,9 @@ export default function Navbar({
     { label: 'Categories', tab: 'categories' },
     { label: 'About Us', tab: 'about', isNew: true },
     { label: 'Contact', tab: 'contact' },
-    { label: 'Admin', tab: 'admin' }
+    ...(currentUser?.email === 'adityaworkspace22@gmail.com'
+  ? [{ label: 'Admin', tab: 'admin' }]
+  : [])
   ];
 
   const handleLinkClick = (tab: string) => {

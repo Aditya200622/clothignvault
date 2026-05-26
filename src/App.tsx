@@ -323,7 +323,13 @@ export default function App() {
 )}
 
 {currentTab === 'admin' && (
-  <AdminView />
+  currentUser?.email === 'adityaworkspace22@gmail.com' ? (
+    <AdminView />
+  ) : (
+    <div className="min-h-screen flex items-center justify-center text-white text-2xl font-bold">
+      Access Denied
+    </div>
+  )
 )}
 
 {currentTab === 'about' && <AboutView />}
