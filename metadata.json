@@ -1,0 +1,6 @@
+{
+  "name": "ClothingVault",
+  "description": "Premium luxury Western fashion e-commerce destination for girls, featuring sleek dark aesthetics and curated collections.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
