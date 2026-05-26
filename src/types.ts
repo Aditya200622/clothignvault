@@ -34,6 +34,7 @@ export interface CartItem {
 
 export interface Order {
   id: string;
+  userEmail: string;
   date: string;
   items: CartItem[];
   subtotal: number;

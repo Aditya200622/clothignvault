@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  query,
+  where
+} from 'firebase/firestore';
 import { db } from '../firebase/firebase';
 import { User, LogOut, ShieldCheck, ShoppingBag, MapPin, Phone, HelpCircle, CheckCircle, Clock } from 'lucide-react';
 import { Order, UserProfile } from '../types';
@@ -28,7 +33,12 @@ export default function ProfileView({
 }, []);
 
 const fetchOrders = async () => {
-  const querySnapshot = await getDocs(collection(db, "orders"));
+  const q = query(
+  collection(db, "orders"),
+  where("userEmail", "==", currentUser.email)
+);
+
+const querySnapshot = await getDocs(q);
 
   const fetchedOrders = querySnapshot.docs.map((doc) => ({
     ...doc.data(),

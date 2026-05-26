@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { db } from '../firebase/firebase';
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc,  query,
+  where } from 'firebase/firestore';
 import { ShieldCheck, Lock, CreditCard, Gift, ArrowLeft, RefreshCw, CheckCircle, Truck } from 'lucide-react';
 import { CartItem, Order } from '../types';
 
@@ -77,6 +78,7 @@ export default function CheckoutView({
       
      const newOrder: Order = {
   id: generatedId,
+  userEmail: formData.email,
   date: new Date().toISOString().split('T')[0],
   items: [...cart],
   subtotal,

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CartItem, Product, Order, UserProfile } from './types';
 import { PRODUCTS } from './data';
+import AdminView from "./views/AdminView";
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
@@ -177,6 +178,7 @@ export default function App() {
 
   const handleAddReview = (productId: string, name: string, rating: number, comment: string) => {
     const matchedProduct = PRODUCTS.find((p) => p.id === productId);
+    
     if (matchedProduct) {
       const newReview = {
         id: `rev-${Date.now()}`,
@@ -303,24 +305,28 @@ export default function App() {
           />
         )}
 
-        {currentTab === 'profile' && (
-          currentUser ? (
-            <ProfileView
-              currentUser={currentUser}
-              orders={orders}
-              onLogout={handleLogout}
-              onUpdateProfile={handleUpdateProfile}
-              setCurrentTab={setCurrentTab}
-            />
-          ) : (
-            <LoginSignupView
-              onLogin={handleLogin}
-              setCurrentTab={setCurrentTab}
-            />
-          )
-        )}
+{currentTab === 'profile' && (
+  currentUser ? (
+    <ProfileView
+      currentUser={currentUser}
+      orders={orders}
+      onLogout={handleLogout}
+      onUpdateProfile={handleUpdateProfile}
+      setCurrentTab={setCurrentTab}
+    />
+  ) : (
+    <LoginSignupView
+      onLogin={handleLogin}
+      setCurrentTab={setCurrentTab}
+    />
+  )
+)}
 
-        {currentTab === 'about' && <AboutView />}
+{currentTab === 'admin' && (
+  <AdminView />
+)}
+
+{currentTab === 'about' && <AboutView />}
 
         {currentTab === 'contact' && <ContactView />}
 

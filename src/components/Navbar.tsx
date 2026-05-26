@@ -37,7 +37,8 @@ export default function Navbar({
     { label: 'Shop', tab: 'shop' },
     { label: 'Categories', tab: 'categories' },
     { label: 'About Us', tab: 'about', isNew: true },
-    { label: 'Contact', tab: 'contact' }
+    { label: 'Contact', tab: 'contact' },
+    { label: 'Admin', tab: 'admin' }
   ];
 
   const handleLinkClick = (tab: string) => {

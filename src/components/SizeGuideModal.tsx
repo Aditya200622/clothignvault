@@ -26,7 +26,7 @@ export default function SizeGuideModal({ onClose, productCategory, productName }
   };
 
   const [activeCategory, setActiveCategory] = useState<CategoryType>(getInitialCategory());
-  const [unitMode, setUnitMode] = useState<ModeType>('in'); // Default to US inches / Cm toggles
+  const [unitMode, setUnitMode] = useState<ModeType>('inch'); // Default to US inches / Cm toggles
   
   // Fit recommendation wizard inputs
   const [userBustChest, setUserBustChest] = useState<string>('');
