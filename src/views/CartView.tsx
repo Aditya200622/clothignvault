@@ -236,7 +236,7 @@ export default function CartView({
                 <div className="flex justify-between">
                   <span className="flex items-center space-x-1">
                     <span>Air Shipping Logistics</span>
-                    <HelpCircle className="h-3 w-3 text-gray-400" title="Free worldwide air express on catalog items above $150." />
+                    <HelpCircle className="h-3 w-3 text-gray-400"  />
                   </span>
                   <span className="font-mono text-gray-950">
                     {shippingCost === 0 ? <b className="text-emerald-600 font-black">FREE OVER $150</b> : `$${shippingCost}`}

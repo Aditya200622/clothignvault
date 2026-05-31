@@ -23,6 +23,8 @@ export interface Product {
   reviews: Review[];
   material: string;
   care: string;
+  stock: number;
+sku: string;
 }
 
 export interface CartItem {
@@ -51,6 +53,8 @@ export interface Order {
     phone: string;
   };
   paymentMethod: string;
+  trackingNumber?: string;
+courierPartner?: string;
 }
 
 export interface UserProfile {
