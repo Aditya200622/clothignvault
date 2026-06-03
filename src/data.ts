@@ -34,6 +34,8 @@ export const CATEGORIES = [
 export const PRODUCTS: Product[] = [
   {
     id: 'v1-atelier-velvet',
+sku: 'CV-001',
+stock: 25,
     name: 'Atelier Off-Shoulder Velvet Gown',
     price: 380,
     originalPrice: 450,
@@ -78,6 +80,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'v2-cyber-street-hoodie',
+sku: 'CV-002',
+stock: 40,
     name: 'Cybernetic Oversized Loop Hoodie',
     price: 165,
     rating: 4.8,
@@ -115,6 +119,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'v3-lavender-slip',
+sku: 'CV-003',
+stock: 18,
     name: 'Aura Silk Slip Dress in Lavender Glow',
     price: 240,
     originalPrice: 290,
@@ -152,6 +158,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'v4-leather-trench',
+sku: 'CV-004',
+stock: 12,
     name: 'Obsidian Hourglass Leather Trench Coat',
     price: 520,
     rating: 4.7,
@@ -188,6 +196,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'v5-cashmere-knit',
+sku: 'CV-005',
+stock: 20,
     name: 'Clara Slouchy Cashmere Knit Cardigan Suite',
     price: 295,
     originalPrice: 350,
@@ -225,6 +235,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'v6-broad-blazer',
+sku: 'CV-006',
+stock: 16,
     name: 'Bespoke Atelier Hourglass Blazer',
     price: 310,
     rating: 4.8,
@@ -261,6 +273,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'v7-cargo-denim',
+    sku: 'CV-007',
+    stock: 30,
     name: 'Distressed Heavy Utility Cargo Denim',
     price: 185,
     rating: 4.6,
@@ -297,6 +311,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'v8-sequin-mini',
+    sku: 'CV-008',
+    stock: 25,
     name: 'Midnight Sparkle Sequin Silhouette Gown',
     price: 340,
     originalPrice: 395,

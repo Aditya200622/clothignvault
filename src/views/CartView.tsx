@@ -33,7 +33,7 @@ export default function CartView({
   const discountAmount = Math.round(subtotal * (couponDiscountPct / 100));
   const postDiscountSubtotal = subtotal - discountAmount;
   
-  // Shipping thresholds: Free shipping above $150
+  // Shipping thresholds: Free shipping above ₹150
   const shippingCost = subtotal >= 150 || subtotal === 0 ? 0 : 25;
   const taxCost = Math.round(postDiscountSubtotal * 0.08); // 8% sales tax
   const grandTotal = postDiscountSubtotal + shippingCost + taxCost;
@@ -239,7 +239,7 @@ export default function CartView({
                     <HelpCircle className="h-3 w-3 text-gray-400"  />
                   </span>
                   <span className="font-mono text-gray-950">
-                    {shippingCost === 0 ? <b className="text-emerald-600 font-black">FREE OVER $150</b> : `$${shippingCost}`}
+                    {shippingCost === 0 ? <b className="text-emerald-600 font-black">FREE OVER ₹150</b> : `$${shippingCost}`}
                   </span>
                 </div>
 

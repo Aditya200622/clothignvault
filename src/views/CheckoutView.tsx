@@ -181,15 +181,15 @@ onPlaceOrder(newOrder);
             {/* Step 1: Destination address details */}
             <div className="p-6 rounded-2xl bg-[#0a0a0c] border border-white/5 space-y-4">
               <span className="text-[10px] uppercase font-mono tracking-widest text-purple-400 block font-semibold">Couture Logistics Gate</span>
-              <h3 className="text-sm sm:text-base font-display font-semibold text-white">Shipping Address</h3>
+              <h3 className="text-sm sm:text-base font-display font-semibold text-white">Delivery Address</h3>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1.5 col-span-2">
-                  <label className="text-[11px] text-gray-400 uppercase font-medium">Full Identifier Name</label>
+                  <label className="text-[11px] text-gray-400 uppercase font-medium">Full Name</label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Cassandra Sterling"
+                    placeholder="Enter your full name"
                     className="w-full bg-neutral-950 border border-white/5 focus:border-purple-500/30 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none"
                     value={formData.fullName}
                     onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
@@ -197,11 +197,11 @@ onPlaceOrder(newOrder);
                 </div>
 
                 <div className="space-y-1.5 col-span-2">
-                  <label className="text-[11px] text-gray-400 uppercase font-medium">Notification Email Address</label>
+                  <label className="text-[11px] text-gray-400 uppercase font-medium">Email Address</label>
                   <input
                     type="email"
                     required
-                    placeholder="e.g. cassandra@sterling.com"
+                    placeholder="Enter your email"
                     className="w-full bg-neutral-950 border border-white/5 focus:border-purple-500/30 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -209,11 +209,11 @@ onPlaceOrder(newOrder);
                 </div>
 
                 <div className="space-y-1.5 col-span-2">
-                  <label className="text-[11px] text-gray-400 uppercase font-medium">Physical Street Address (Suite/Apt)</label>
+                  <label className="text-[11px] text-gray-400 uppercase font-medium">Address</label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. 777 Luxury Rodeo Drive, Apt 4C"
+                    placeholder="House No, Street, Area"
                     className="w-full bg-neutral-950 border border-white/5 focus:border-purple-500/30 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none"
                     value={formData.address}
                     onChange={(e) => setFormData({ ...formData, address: e.target.value })}
@@ -225,7 +225,7 @@ onPlaceOrder(newOrder);
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Los Angeles"
+                    placeholder="Lucknow"
                     className="w-full bg-neutral-950 border border-white/5 focus:border-purple-500/30 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none"
                     value={formData.city}
                     onChange={(e) => setFormData({ ...formData, city: e.target.value })}
@@ -233,11 +233,11 @@ onPlaceOrder(newOrder);
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[11px] text-gray-400 uppercase font-medium">Postal Index Code</label>
+                  <label className="text-[11px] text-gray-400 uppercase font-medium">PIN Code</label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. 90210"
+                    placeholder="226001"
                     className="w-full bg-neutral-950 border border-white/5 focus:border-purple-500/30 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none"
                     value={formData.postalCode}
                     onChange={(e) => setFormData({ ...formData, postalCode: e.target.value })}
@@ -245,11 +245,11 @@ onPlaceOrder(newOrder);
                 </div>
 
                 <div className="space-y-1.5 col-span-2">
-                  <label className="text-[11px] text-gray-400 uppercase font-medium">Courier Phone Number</label>
+                  <label className="text-[11px] text-gray-400 uppercase font-medium">Mobile Number</label>
                   <input
                     type="tel"
                     required
-                    placeholder="e.g. 555-0199"
+                    placeholder="9876543210"
                     className="w-full bg-neutral-950 border border-white/5 focus:border-purple-500/30 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -262,7 +262,7 @@ onPlaceOrder(newOrder);
             <div className="p-6 rounded-2xl bg-[#0a0a0c] border border-white/5 space-y-6">
               <div>
                 <span className="text-[10px] uppercase font-mono tracking-widest text-purple-400 block font-semibold">Payment Protocols</span>
-                <h3 className="text-sm sm:text-base font-display font-semibold text-white mt-0.5">Billing Transaction Method</h3>
+                <h3 className="text-sm sm:text-base font-display font-semibold text-white mt-0.5">Payment Method</h3>
               </div>
 
               {/* Payment switches tabs */}
@@ -311,16 +311,16 @@ onPlaceOrder(newOrder);
               {paymentMethod === 'card' && (
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-white/5 pt-5">
                   <div className="col-span-3 space-y-1.5">
-                    <label className="text-[11px] text-gray-400 uppercase font-medium">Cardholder Registered Name</label>
+                    <label className="text-[11px] text-gray-400 uppercase font-medium">Card Holder Name</label>
                     <input
                       type="text"
-                      placeholder="e.g. Cassandra Sterling"
+                      placeholder="Enter your full name"
                       className="w-full bg-neutral-950 border border-white/5 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none"
                     />
                   </div>
                   
                   <div className="col-span-3 space-y-1.5">
-                    <label className="text-[11px] text-gray-400 uppercase font-medium">PCI-Secure Number</label>
+                    <label className="text-[11px] text-gray-400 uppercase font-medium">Card Number</label>
                     <input
                       type="text"
                       placeholder="4111 2222 3333 4444"
@@ -339,7 +339,7 @@ onPlaceOrder(newOrder);
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-[11px] text-gray-400 uppercase font-medium inline-block">CVV/CVC</label>
+                    <label className="text-[11px] text-gray-400 uppercase font-medium inline-block">CVV</label>
                     <input
                       type="password"
                       placeholder="•••"
@@ -358,10 +358,10 @@ onPlaceOrder(newOrder);
               {paymentMethod === 'apple' && (
                 <div className="p-6 rounded-2xl bg-black border border-white/5 text-center space-y-3">
                   <div className="h-10 w-10 text-white flex items-center justify-center rounded-full bg-neutral-900 border border-white/10 mx-auto">
-                    
+                    
                   </div>
                   <p className="text-xs text-gray-400 max-w-xs mx-auto">
-                    Apple Pay express dispatch will launch biometric authentication (FaceID) upon form submittal.
+                    Complete payment securely using Apple Pay.
                   </p>
                 </div>
               )}
@@ -370,7 +370,7 @@ onPlaceOrder(newOrder);
                 <div className="p-6 rounded-2xl bg-black border border-white/5 text-center space-y-3">
                   <span className="font-sans font-bold text-lg italic text-[#003087]">PayPal</span>
                   <p className="text-xs text-gray-400 max-w-xs mx-auto">
-                    PayPal wallet secure redirection overlay executes instantly to deduct from your registered credit limits.
+                    Complete payment securely using PayPal.
                   </p>
                 </div>
               )}
@@ -382,7 +382,7 @@ onPlaceOrder(newOrder);
           {/* Right Checkout Recapitulation Summary (5 columns) */}
           <aside className="lg:col-span-5 space-y-6">
             <div className="p-6 rounded-3xl bg-[#0a0a0c] border border-white/10 space-y-4">
-              <span className="font-display font-semibold text-xs uppercase tracking-[0.2em] text-white block pb-2 border-b border-white/5">Cart Verification list</span>
+              <span className="font-display font-semibold text-xs uppercase tracking-[0.2em] text-white block pb-2 border-b border-white/5">Order Summary</span>
               
               {/* Items listing brief */}
               <div className="space-y-3 max-h-48 overflow-y-auto pr-2">
@@ -398,7 +398,7 @@ onPlaceOrder(newOrder);
                       <span className="text-white font-medium block truncate text-[11px]">{item.product.name}</span>
                       <span className="text-[10px] text-gray-500 font-mono">Size {item.selectedSize} × {item.quantity}</span>
                     </div>
-                    <span className="font-mono text-white">${item.product.price * item.quantity}</span>
+                    <span className="font-mono text-white">₹{item.product.price * item.quantity}</span>
                   </div>
                 ))}
               </div>
@@ -406,34 +406,34 @@ onPlaceOrder(newOrder);
               {/* Calculations lists */}
               <div className="space-y-2 border-t border-white/5 pt-4 text-xs">
                 <div className="flex justify-between text-gray-400">
-                  <span>Vault Bag Total</span>
-                  <span className="font-mono text-white">${subtotal}</span>
+                  <span>Subtotal</span>
+                  <span className="font-mono text-white">₹{subtotal}</span>
                 </div>
 
                 {couponDiscountPct > 0 && (
                   <div className="flex justify-between text-emerald-400 font-mono">
-                    <span>Authorized Voucher Discount</span>
-                    <span>-${discountAmount}</span>
+                    <span>Discount</span>
+                    <span>-₹{discountAmount}</span>
                   </div>
                 )}
 
                 <div className="flex justify-between text-gray-400">
-                  <span>Priority Air Freight</span>
+                  <span>Shipping</span>
                   <span className="font-mono text-white">
-                    {shippingCost === 0 ? <b className="text-emerald-400">COMPLIMENTARY</b> : `$${shippingCost}`}
+                    {shippingCost === 0 ? <b className="text-emerald-400">FREE</b> : `₹${shippingCost}`}
                   </span>
                 </div>
 
                 <div className="flex justify-between text-gray-400">
-                  <span>PCI Encrypted Duties/Tax</span>
-                  <span className="font-mono text-white">${taxCost}</span>
+                  <span>GST & Taxes</span>
+                  <span className="font-mono text-white">₹{taxCost}</span>
                 </div>
               </div>
 
               {/* Grand Total */}
               <div className="pt-4 border-t border-white/5 flex justify-between items-baseline font-semibold">
-                <span className="text-xs uppercase text-white tracking-widest font-bold">Authorized Total</span>
-                <span className="text-lg sm:text-xl font-bold font-mono text-luxury">${grandTotal}</span>
+                <span className="text-xs uppercase text-white tracking-widest font-bold">Total Amount</span>
+                <span className="text-lg sm:text-xl font-bold font-mono text-luxury">₹{grandTotal}</span>
               </div>
 
               {/* Submit button */}
@@ -441,12 +441,12 @@ onPlaceOrder(newOrder);
                 type="submit"
                 className="w-full py-4 bg-gradient-to-r from-purple-800 to-indigo-950 border border-purple-500/20 hover:from-purple-700 hover:to-indigo-900 text-white rounded-xl text-xs uppercase font-bold tracking-[0.2em] transition-all hover:scale-[1.01] shadow-[0_0_20px_rgba(168,85,247,0.3)] cursor-pointer mt-4 block text-center"
               >
-                Authorize Order Payment
+                Place Order
               </button>
 
               <div className="flex items-center justify-center space-x-1 text-[9px] text-gray-500 font-mono">
                 <ShieldCheck className="h-4 w-4 text-purple-400" />
-                <span>PCI-DSS GUARANTEE • VAULT AUTHENTIC PROTECTION</span>
+                <span>100% Secure Checkout</span>
               </div>
 
             </div>

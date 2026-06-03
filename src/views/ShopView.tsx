@@ -247,8 +247,8 @@ export default function ShopView({
               className="w-full h-1 bg-rose-100 rounded-lg appearance-none cursor-pointer accent-rose-500"
             />
             <div className="flex justify-between text-[10px] text-gray-400 font-mono">
-              <span>$50</span>
-              <span>$600</span>
+              <span>₹50</span>
+              <span>₹600</span>
             </div>
           </div>
 

@@ -27,7 +27,7 @@ export default function Footer({ setCurrentTab }: FooterProps) {
             </div>
             <div>
               <p className="font-display text-gray-950 text-xs uppercase tracking-widest font-black">Priority Air Express</p>
-              <p className="mt-1 text-xs text-gray-500 leading-relaxed font-semibold">Complimentary 2-4 day worldwide courier transport on orders $150+.</p>
+              <p className="mt-1 text-xs text-gray-500 leading-relaxed font-semibold">Complimentary 2-4 day worldwide courier transport on orders ₹550+.</p>
             </div>
           </div>
 

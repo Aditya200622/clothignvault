@@ -108,9 +108,9 @@ export default function WishlistView({
                   </p>
                   
                   <div className="mt-2 flex items-baseline space-x-1.5 font-mono">
-                    <span className="text-xs sm:text-sm font-black text-rose-600">${product.price}</span>
+                    <span className="text-xs sm:text-sm font-black text-rose-600">₹{product.price}</span>
                     {product.originalPrice && (
-                      <span className="text-[10px] sm:text-xs text-gray-400 line-through">${product.originalPrice}</span>
+                      <span className="text-[10px] sm:text-xs text-gray-400 line-through">₹{product.originalPrice}</span>
                     )}
                   </div>
                 </div>

@@ -601,9 +601,9 @@ export default function HomeView({
                   
                   <div className="flex items-center justify-between mt-2">
                     <div className="flex items-baseline space-x-1 sm:space-x-1.5">
-                      <span className="font-mono text-xs sm:text-sm font-black text-rose-600">${product.price.toFixed(2)}</span>
+                      <span className="font-mono text-xs sm:text-sm font-black text-rose-600">₹{product.price.toFixed(2)}</span>
                       {product.originalPrice && (
-                        <span className="font-mono text-[10px] text-gray-400 line-through">${product.originalPrice.toFixed(2)}</span>
+                        <span className="font-mono text-[10px] text-gray-400 line-through">₹{product.originalPrice.toFixed(2)}</span>
                       )}
                     </div>
                     

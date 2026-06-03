@@ -43,7 +43,13 @@ export interface Order {
   shipping: number;
   tax: number;
   total: number;
-  status: 'Processing' | 'Shipped' | 'Out for Delivery' | 'Delivered';
+  status:   | 'Processing'
+  | 'Confirmed'
+  | 'Packed'
+  | 'Shipped'
+  | 'Out for Delivery'
+  | 'Delivered'
+  | 'Cancelled';
   shippingAddress: {
     fullName: string;
     email: string;

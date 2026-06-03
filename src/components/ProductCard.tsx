@@ -153,9 +153,9 @@ export default function ProductCard({
         {/* Price Tag Row with discount support */}
         <div className="mt-3 pt-2.5 border-t border-rose-50 flex items-center justify-between">
           <div className="flex items-baseline space-x-1.5">
-            <span className="text-xs sm:text-sm font-black text-rose-600 font-mono">${product.price}</span>
+            <span className="text-xs sm:text-sm font-black text-rose-600 font-mono">₹{product.price}</span>
             {product.originalPrice && (
-              <span className="text-[10px] sm:text-xs text-gray-400 line-through font-mono font-medium">${product.originalPrice}</span>
+              <span className="text-[10px] sm:text-xs text-gray-400 line-through font-mono font-medium">₹{product.originalPrice}</span>
             )}
           </div>
           

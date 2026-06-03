@@ -149,9 +149,9 @@ export default function ProductDetailsView({
 
             {/* Price section with sale awareness */}
             <div className="flex items-baseline space-x-3.5 mt-2">
-              <span className="text-xl sm:text-2xl font-black text-rose-600 font-mono">${product.price}</span>
+              <span className="text-xl sm:text-2xl font-black text-rose-600 font-mono">₹{product.price}</span>
               {product.originalPrice && (
-                <span className="text-sm text-gray-400 line-through font-mono">${product.originalPrice}</span>
+                <span className="text-sm text-gray-400 line-through font-mono">₹s{product.originalPrice}</span>
               )}
               {product.originalPrice && (
                 <span className="text-[10px] uppercase font-black text-rose-500 font-mono bg-rose-50 px-2.5 py-1 rounded-sm border border-rose-100">
