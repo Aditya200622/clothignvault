@@ -77,7 +77,10 @@ export default function Footer({ setCurrentTab }: FooterProps) {
             </span>
           </div>
           <p className="text-xs text-gray-500 leading-relaxed font-medium">
-            Crafting premium luxury streetwear and sculptural couture for women who define modern western fashion. High-density fabrics, detailed stitch lines, and iconic glow aesthetics. Inspired by high-end London, Paris, and Milan atelier trends.
+            ClothingVault is a premium Indian women's western fashion brand delivering elegant, modern and trend-focused apparel. 
+            <br/><br/>
+            <strong>Store Address:</strong><br/>
+            Shop No. 12, Sarojini Nagar Market, New Delhi, India.
           </p>
           <div className="flex space-x-3 pt-2">
             <motion.a 
@@ -204,28 +207,27 @@ export default function Footer({ setCurrentTab }: FooterProps) {
           </div>
           <div className="flex items-center space-x-2 text-xs text-gray-600 font-bold">
             <Mail className="h-3.5 w-3.5 text-rose-500" />
-            <span>supportclothingvault@gmail.com</span>
+            <span>clothingvaultcare@gmail.com</span>
           </div>
         </div>
 
       </div>
 
-      {/* Large luxury background branding watermark for editorial fashion look */}
-      <div className="relative w-full overflow-hidden select-none pointer-events-none border-t border-rose-100/50 py-4">
-        <h2 className="font-display font-black text-[12vw] tracking-[0.26em] text-center uppercase leading-none text-rose-500/5 opacity-80 inline-block w-full text-nowrap whitespace-nowrap">
-          CLOTHINGVAULT
-        </h2>
-      </div>
+
 
       {/* Corporate terms, accepted payments, copy */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-rose-100 flex flex-col md:flex-row items-center justify-between text-[11px] text-gray-500 space-y-4 md:space-y-0 font-bold">
         <div>
           <span>© 2026 ClothingVault. All Atelier Designs Reserved. Crafted with high-contrast digital elegance.</span>
         </div>
-        <div className="flex items-center space-x-4">
-          <span className="cursor-pointer hover:text-rose-500 transition-colors">Terms of Service</span>
+        <div className="flex flex-wrap items-center space-x-3 sm:space-x-4">
+          <button onClick={() => handleNavigation('terms')} className="cursor-pointer hover:text-rose-500 transition-colors">Terms of Service</button>
           <span>•</span>
-          <span className="cursor-pointer hover:text-rose-500 transition-colors">Privacy Covenant</span>
+          <button onClick={() => handleNavigation('privacy')} className="cursor-pointer hover:text-rose-500 transition-colors">Privacy Covenant</button>
+          <span>•</span>
+          <button onClick={() => handleNavigation('refund')} className="cursor-pointer hover:text-rose-500 transition-colors">Refund Policy</button>
+          <span>•</span>
+          <button onClick={() => handleNavigation('shipping')} className="cursor-pointer hover:text-rose-500 transition-colors">Shipping Policy</button>
         </div>
         
         {/* Payment Icons */}

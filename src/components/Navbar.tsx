@@ -38,7 +38,7 @@ export default function Navbar({
     { label: 'Categories', tab: 'categories' },
     { label: 'About Us', tab: 'about', isNew: true },
     { label: 'Contact', tab: 'contact' },
-    ...(currentUser?.email === 'adityaworkspace22@gmail.com'
+    ...(currentUser?.role === 'admin' || currentUser?.email === 'adityaworkspace22@gmail.com'
   ? [{ label: 'Admin', tab: 'admin' }]
   : [])
   ];
@@ -64,7 +64,7 @@ export default function Navbar({
       {/* Sticky Premium Header Container */}
       <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         isHome 
-          ? 'bg-rose-500/10 backdrop-blur-md border-b border-rose-200/20 text-white shadow-sm' 
+          ? 'bg-rose-500/10 backdrop-blur-md border-b border-rose-200/20 text-rose-950 shadow-[0_4px_30px_rgba(0,0,0,0.05)]' 
           : 'bg-white/90 backdrop-blur-md border-b border-rose-100 text-gray-800 shadow-sm'
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
@@ -84,7 +84,7 @@ export default function Navbar({
             
             <span className={`font-display font-black text-base sm:text-lg tracking-[0.12em] uppercase transition-all duration-300 group-hover:tracking-[0.25em] ${
               isHome 
-                ? 'text-white hover:text-rose-100' 
+                ? 'text-rose-950 hover:text-rose-600' 
                 : 'text-gray-950 hover:text-rose-500'
             }`}>
               CLOTHING<span className="text-rose-500 font-light">VAULT</span>
@@ -101,13 +101,13 @@ export default function Navbar({
                 whileTap={{ scale: 0.95 }}
                 className={`font-sans text-xs tracking-widest uppercase font-bold transition-all duration-200 relative py-1 cursor-pointer flex items-center gap-1.5 ${
                   currentTab === link.tab
-                    ? (isHome ? 'text-white' : 'text-rose-600')
-                    : (isHome ? 'text-rose-200 hover:text-white' : 'text-gray-500 hover:text-rose-600')
+                    ? (isHome ? 'text-rose-900' : 'text-rose-600')
+                    : (isHome ? 'text-rose-950/70 hover:text-rose-900' : 'text-gray-500 hover:text-rose-600')
                 }`}
               >
                 <span>{link.label}</span>
                 {link.isNew && (
-                  <span className="text-[7.5px] bg-white text-rose-600 font-extrabold px-1.5 py-0.5 rounded-sm shadow-xs border border-rose-100">
+                  <span className="text-[7.5px] bg-rose-50 text-rose-600 font-extrabold px-1.5 py-0.5 rounded-sm shadow-xs border border-rose-200">
                     NEW
                   </span>
                 )}
@@ -115,7 +115,7 @@ export default function Navbar({
                   <motion.div
                     layoutId="navbar-underline"
                     className={`absolute bottom-0 left-0 right-0 h-[2px] rounded-full ${
-                      isHome ? 'bg-white' : 'bg-rose-500'
+                      isHome ? 'bg-rose-600' : 'bg-rose-500'
                     }`}
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
@@ -132,7 +132,7 @@ export default function Navbar({
               onClick={() => setIsSearchOpen(prev => !prev)}
               aria-label="Search items"
               className={`p-2 rounded-full transition-all cursor-pointer ${
-                isHome ? 'text-rose-100 hover:text-white hover:bg-white/10' : 'text-gray-600 hover:text-rose-600 hover:bg-rose-50'
+                isHome ? 'text-rose-950/80 hover:text-rose-950 hover:bg-rose-900/10' : 'text-gray-600 hover:text-rose-600 hover:bg-rose-50'
               }`}
             >
               <Search className="h-4.5 w-4" />
@@ -143,7 +143,7 @@ export default function Navbar({
               onClick={() => handleLinkClick('wishlist')}
               aria-label="Wishlist"
               className={`p-2 rounded-full transition-all relative cursor-pointer ${
-                isHome ? 'text-rose-100 hover:text-white hover:bg-white/10' : 'text-gray-600 hover:text-rose-600 hover:bg-rose-50'
+                isHome ? 'text-rose-950/80 hover:text-rose-950 hover:bg-rose-900/10' : 'text-gray-600 hover:text-rose-600 hover:bg-rose-50'
               }`}
             >
               <Heart className="h-4.5 w-4.5" />
@@ -159,7 +159,7 @@ export default function Navbar({
               onClick={() => setIsMiniCartOpen(true)}
               aria-label="Cart"
               className={`p-2 rounded-full transition-all relative cursor-pointer ${
-                isHome ? 'text-rose-100 hover:text-white hover:bg-white/10' : 'text-gray-600 hover:text-rose-600 hover:bg-rose-50'
+                isHome ? 'text-rose-950/80 hover:text-rose-950 hover:bg-rose-900/10' : 'text-gray-600 hover:text-rose-600 hover:bg-rose-50'
               }`}
             >
               <ShoppingBag className="h-4.5 w-4.5" />
@@ -175,7 +175,7 @@ export default function Navbar({
               onClick={() => handleLinkClick(currentUser ? 'profile' : 'login')}
               aria-label="Profile"
               className={`p-1.5 rounded-full transition-all cursor-pointer flex items-center space-x-1 ${
-                isHome ? 'text-rose-100 hover:text-white hover:bg-white/10' : 'text-gray-600 hover:text-rose-600 hover:bg-rose-50'
+                isHome ? 'text-rose-950/80 hover:text-rose-950 hover:bg-rose-900/10' : 'text-gray-600 hover:text-rose-600 hover:bg-rose-50'
               }`}
             >
               {currentUser ? (
@@ -375,7 +375,7 @@ export default function Navbar({
                           </div>
 
                           <div className="flex items-center space-x-2">
-                            <span className="font-mono text-xs sm:text-sm font-bold text-rose-600">${item.product.price * item.quantity}</span>
+                            <span className="font-mono text-xs sm:text-sm font-bold text-rose-600">₹{item.product.price * item.quantity}</span>
                             <button
                               onClick={() => onRemoveFromCart(item.product.id, item.selectedSize)}
                               className="p-1 hover:bg-rose-50 rounded text-rose-500 transition-colors cursor-pointer"
@@ -395,7 +395,7 @@ export default function Navbar({
                 <div className="p-5 border-t border-rose-100 bg-rose-50/20 space-y-4">
                   <div className="flex justify-between items-center text-xs tracking-wider text-gray-500 uppercase font-bold">
                     <span>Order Subtotal</span>
-                    <span className="font-mono text-lg font-bold text-rose-600">${cartTotal}</span>
+                    <span className="font-mono text-lg font-bold text-rose-600">₹{cartTotal}</span>
                   </div>
                   <div className="bg-rose-500/5 rounded-xl p-3 border border-rose-100">
                     <p className="text-[10px] text-rose-700 font-sans leading-relaxed">

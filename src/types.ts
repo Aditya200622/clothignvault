@@ -14,7 +14,7 @@ export interface Product {
   rating: number;
   reviewsCount: number;
   category: string;
-  tag: string; // 'New Arrival' | 'Trending' | 'Oversized' | 'Atelier'
+  tag: string;
   images: string[];
   description: string;
   sizes: string[];
@@ -24,7 +24,13 @@ export interface Product {
   material: string;
   care: string;
   stock: number;
-sku: string;
+  sku: string;
+  brand?: string;
+  fabric?: string;
+  countryOfOrigin?: string;
+  gstPercent?: number;
+  tags?: string[];
+  isActive?: boolean;
 }
 
 export interface CartItem {
@@ -43,27 +49,34 @@ export interface Order {
   shipping: number;
   tax: number;
   total: number;
-  status:   | 'Processing'
-  | 'Confirmed'
-  | 'Packed'
-  | 'Shipped'
-  | 'Out for Delivery'
-  | 'Delivered'
-  | 'Cancelled';
+  status:
+    | 'Processing'
+    | 'Confirmed'
+    | 'Packed'
+    | 'Shipped'
+    | 'Out for Delivery'
+    | 'Delivered'
+    | 'Cancelled';
   shippingAddress: {
     fullName: string;
     email: string;
     address: string;
     city: string;
+    state: string;
     postalCode: string;
     phone: string;
   };
   paymentMethod: string;
+  paymentStatus?: 'Paid' | 'Pending' | 'Failed' | 'Refunded';
+  razorpayPaymentId?: string;
+  razorpayOrderId?: string;
   trackingNumber?: string;
-courierPartner?: string;
+  courierPartner?: string;
+  notes?: string;
 }
 
 export interface UserProfile {
+  uid: string;
   name: string;
   email: string;
   joinedDate: string;
@@ -71,6 +84,31 @@ export interface UserProfile {
   phone: string;
   address: string;
   city: string;
+  state?: string;
   postalCode: string;
   avatar: string;
+  role?: 'admin' | 'customer';
+  isActive?: boolean;
+  createdAt?: string;
+  updatedAt?: string;
+  cart?: CartItem[];
+  wishlist?: Product[];
+}
+
+export interface Coupon {
+  id: string;
+  code: string;
+  discountType: 'percent' | 'flat';
+  discountValue: number;
+  minOrderAmount: number;
+  maxUses: number;
+  usedCount: number;
+  isActive: boolean;
+  expiryDate: string;
+}
+
+export interface ToastOptions {
+  type: 'success' | 'error' | 'warning' | 'info';
+  message: string;
+  duration?: number;
 }

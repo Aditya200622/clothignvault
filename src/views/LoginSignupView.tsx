@@ -117,25 +117,7 @@ export default function LoginSignupView({ onLogin, setCurrentTab }: LoginSignupV
   const [loading, setLoading] = useState(false);
   const [agreedTerms, setAgreedTerms] = useState(false);
 
-  // ── 3-D card tilt via mouse ────────────────────────────────────────────────
-  const cardRef = useRef<HTMLDivElement>(null);
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [6, -6]), { stiffness: 120, damping: 22 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), { stiffness: 120, damping: 22 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = cardRef.current;
-    if (!el) return;
-    const { left, top, width, height } = el.getBoundingClientRect();
-    mouseX.set((e.clientX - left) / width - 0.5);
-    mouseY.set((e.clientY - top) / height - 0.5);
-  };
-
-  const handleMouseLeave = () => {
-    mouseX.set(0);
-    mouseY.set(0);
-  };
+  // ── Removed 3-D card tilt to prevent GPU text blur ──
 
   // ── Parallax for model images ──────────────────────────────────────────────
   const [parallax, setParallax] = useState({ x: 0, y: 0 });
@@ -162,6 +144,7 @@ export default function LoginSignupView({ onLogin, setCurrentTab }: LoginSignupV
         firebaseUser = await signupUser(name, email, password);
       }
       const generatedProfile: UserProfile = {
+        uid: firebaseUser.uid,
         name: firebaseUser.displayName || name || email.split("@")[0],
         email: firebaseUser.email || email,
         phone: phone || "+91 0000000000",
@@ -190,10 +173,14 @@ export default function LoginSignupView({ onLogin, setCurrentTab }: LoginSignupV
     setPassword('password123');
   };
 
-  // ── Flip animation state ───────────────────────────────────────────────────
-  const flipVariants = {
-    login: { rotateY: 0, transition: { duration: 0.8, type: 'spring' as const, stiffness: 60, damping: 18 } },
-    signup: { rotateY: 180, transition: { duration: 0.8, type: 'spring' as const, stiffness: 60, damping: 18 } },
+  // ── Fade animation state ───────────────────────────────────────────────────
+  const fadeVariants = {
+    login: { opacity: 1, x: 0, zIndex: 10, transition: { duration: 0.4 } },
+    signup: { opacity: 0, x: -20, zIndex: -1, transition: { duration: 0.4 } },
+  };
+  const signupFadeVariants = {
+    signup: { opacity: 1, x: 0, zIndex: 10, transition: { duration: 0.4 } },
+    login: { opacity: 0, x: 20, zIndex: -1, transition: { duration: 0.4 } },
   };
 
   return (
@@ -231,82 +218,54 @@ export default function LoginSignupView({ onLogin, setCurrentTab }: LoginSignupV
         }}
       />
 
-      {/* ── 3-D card wrapper ── */}
+      {/* ── 2-D card wrapper (No 3D transforms to ensure crisp text) ── */}
       <motion.div
-        ref={cardRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        style={{
-          rotateX,
-          rotateY,
-          transformStyle: 'preserve-3d',
-          perspective: 1200,
-        }}
         initial={{ opacity: 0, y: 48, scale: 0.95 }}
         animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-        className="relative w-full max-w-5xl rounded-[40px] overflow-hidden shadow-2xl flex flex-col lg:flex-row"
+        className="relative w-full max-w-5xl rounded-[40px] overflow-hidden shadow-2xl flex flex-col lg:flex-row bg-white"
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         style2={{ height: '700px' }}
         // We handle height via CSS below
       >
-        {/* ─── LEFT: Flip container ─── */}
-        <div
-          className="relative lg:w-[45%] w-full"
-          style={{
-            perspective: 1200,
-            minHeight: 520,
-          }}
-        >
+        {/* ─── LEFT: Form container ─── */}
+        <div className="relative lg:w-[45%] w-full min-h-[520px]">
+          {/* ── FRONT: Login ── */}
           <motion.div
             animate={isLogin ? 'login' : 'signup'}
-            variants={flipVariants}
-            style={{ transformStyle: 'preserve-3d', position: 'relative', width: '100%', height: '100%', minHeight: 520 }}
+            variants={fadeVariants}
+            initial="login"
+            className="absolute inset-0 bg-white flex flex-col justify-center px-8 sm:px-12 py-10"
           >
-            {/* ── FRONT: Login ── */}
-            <div
-              style={{
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden',
-                position: 'absolute',
-                inset: 0,
-              }}
-              className="bg-white flex flex-col justify-center px-8 sm:px-12 py-10"
-            >
-              <LoginForm
-                email={email} setEmail={setEmail}
-                password={password} setPassword={setPassword}
-                loading={loading}
-                handleSubmit={handleSubmit}
-                onSwitchToSignup={() => setIsLogin(false)}
-                onGuestFill={handleShortcutGuest}
-              />
-            </div>
+            <LoginForm
+              email={email} setEmail={setEmail}
+              password={password} setPassword={setPassword}
+              loading={loading}
+              handleSubmit={handleSubmit}
+              onSwitchToSignup={() => setIsLogin(false)}
+              onGuestFill={handleShortcutGuest}
+            />
+          </motion.div>
 
-            {/* ── BACK: Signup ── */}
-            <div
-              style={{
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden',
-                transform: 'rotateY(180deg)',
-                position: 'absolute',
-                inset: 0,
-              }}
-              className="bg-white flex flex-col justify-center px-8 sm:px-10 py-8 overflow-y-auto"
-            >
-              <SignupForm
-                email={email} setEmail={setEmail}
-                password={password} setPassword={setPassword}
-                name={name} setName={setName}
-                phone={phone} setPhone={setPhone}
-                preferredStyle={preferredStyle} setPreferredStyle={setPreferredStyle}
-                agreedTerms={agreedTerms} setAgreedTerms={setAgreedTerms}
-                loading={loading}
-                handleSubmit={handleSubmit}
-                onSwitchToLogin={() => setIsLogin(true)}
-              />
-            </div>
+          {/* ── BACK: Signup ── */}
+          <motion.div
+            animate={isLogin ? 'login' : 'signup'}
+            variants={signupFadeVariants}
+            initial="signup"
+            className="absolute inset-0 bg-white flex flex-col justify-center px-8 sm:px-10 py-8 overflow-y-auto"
+          >
+            <SignupForm
+              email={email} setEmail={setEmail}
+              password={password} setPassword={setPassword}
+              name={name} setName={setName}
+              phone={phone} setPhone={setPhone}
+              preferredStyle={preferredStyle} setPreferredStyle={setPreferredStyle}
+              agreedTerms={agreedTerms} setAgreedTerms={setAgreedTerms}
+              loading={loading}
+              handleSubmit={handleSubmit}
+              onSwitchToLogin={() => setIsLogin(true)}
+            />
           </motion.div>
         </div>
 
@@ -410,7 +369,7 @@ export default function LoginSignupView({ onLogin, setCurrentTab }: LoginSignupV
               Clothing VULT
             </h3>
             <p className="dm text-white/70 font-medium mt-1" style={{ fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-              Dolor Sit Amet
+              Premium Indian Western Fashion
             </p>
           </div>
         </div>

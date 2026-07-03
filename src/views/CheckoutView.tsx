@@ -1,32 +1,41 @@
 import React, { useState } from 'react';
-import { db } from '../firebase/firebase';
-import { collection, addDoc,  query,
-  where } from 'firebase/firestore';
 import { ShieldCheck, Lock, CreditCard, Gift, ArrowLeft, RefreshCw, CheckCircle, Truck } from 'lucide-react';
 import { CartItem, Order } from '../types';
 
 interface CheckoutViewProps {
   cart: CartItem[];
   couponDiscountPct: number;
-  onPlaceOrder: (order: Order) => void;
+  onPlaceOrder: (order: Order) => Promise<void> | void;
   setCurrentTab: (tab: string) => void;
+  currentUser?: any; // UserProfile
 }
+
+const loadScript = (src: string) => {
+  return new Promise((resolve) => {
+    const script = document.createElement('script');
+    script.src = src;
+    script.onload = () => resolve(true);
+    script.onerror = () => resolve(false);
+    document.body.appendChild(script);
+  });
+};
 
 export default function CheckoutView({
   cart,
   couponDiscountPct,
   onPlaceOrder,
-  setCurrentTab
+  setCurrentTab,
+  currentUser
 }: CheckoutViewProps) {
   // Form fields state
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    address: '',
-    city: '',
-    postalCode: '',
-    phone: '',
-    cardName: '',
+    fullName: currentUser?.name || '',
+    email: currentUser?.email || '',
+    address: currentUser?.address || '',
+    city: currentUser?.city || '',
+    postalCode: currentUser?.postalCode || '',
+    phone: currentUser?.phone || '',
+    cardName: currentUser?.name || '',
     cardNumber: '4111 •••• •••• ••••',
     cardExpiry: '12/29',
     cardCvv: '•••'
@@ -48,64 +57,130 @@ export default function CheckoutView({
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, name: value }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (cart.length === 0) return;
 
-    // Trigger stateful animation sequence
+    if (paymentMethod !== 'card') {
+      alert("Only Razorpay (Card) is supported at this moment.");
+      return;
+    }
+
     setIsProcessing(true);
-    
-    const steps = [
-      { text: 'Opening biometric transit gates...', delay: 0 },
-      { text: 'PCI secure card validation...', delay: 800 },
-      { text: 'Deducting inventory allowance inside Vault ledger...', delay: 1500 },
-      { text: 'Sealing matte-black couture presentation box...', delay: 2200 }
-    ];
+    setProcessingStateMsg('Initializing secure payment gateway...');
 
-    steps.forEach((step) => {
-      setTimeout(() => {
-        setProcessingStateMsg(step.text);
-      }, step.delay);
-    });
-
-    // Complete order placement
-    setTimeout(async () => {
-      const generatedId = `CV-${Math.floor(Math.random() * 90000) + 10000}`;
-      setCreatedOrderId(generatedId);
-      
-     const newOrder: Order = {
-  id: generatedId,
-  userEmail: formData.email,
-  date: new Date().toISOString().split('T')[0],
-  items: [...cart],
-  subtotal,
-  shipping: shippingCost,
-  tax: taxCost,
-  total: grandTotal,
-  status: 'Processing',
-  shippingAddress: {
-    fullName: formData.fullName,
-    email: formData.email,
-    address: formData.address,
-    city: formData.city,
-    postalCode: formData.postalCode,
-    phone: formData.phone
-  },
-  paymentMethod: paymentMethod
-};
-
-await addDoc(collection(db, "orders"), {
-  ...newOrder,
-  createdAt: new Date(),
-});
-
-onPlaceOrder(newOrder);
+    const res = await loadScript('https://checkout.razorpay.com/v1/checkout.js');
+    if (!res) {
+      alert('Razorpay SDK failed to load. Are you online?');
       setIsProcessing(false);
-      setIsDone(true);
-    }, 3000);
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/razorpay-create', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount: grandTotal,
+          currency: 'INR',
+        }),
+      });
+      const data = await response.json();
+
+      if (!data.success) {
+        alert('Server error. Are you online?');
+        setIsProcessing(false);
+        return;
+      }
+
+      const options = {
+        key: import.meta.env.VITE_RAZORPAY_KEY_ID || 'rzp_test_YourTestKey',
+        amount: data.order.amount,
+        currency: data.order.currency,
+        name: 'Clothing Vault',
+        description: 'Test Transaction',
+        order_id: data.order.id,
+        handler: async function (response: any) {
+          setProcessingStateMsg('Payment successful. Sealing vault box...');
+          // Complete order placement
+          const generatedId = `CV-${Math.floor(Math.random() * 90000) + 10000}`;
+          setCreatedOrderId(generatedId);
+          
+          const newOrder: Order = {
+            id: generatedId,
+            userEmail: formData.email,
+            date: new Date().toISOString().split('T')[0],
+            items: [...cart],
+            subtotal,
+            shipping: shippingCost,
+            tax: taxCost,
+            total: grandTotal,
+            status: 'Processing',
+            shippingAddress: {
+              fullName: formData.fullName,
+              email: formData.email,
+              address: formData.address,
+              city: formData.city,
+              state: '',
+              postalCode: formData.postalCode,
+              phone: formData.phone
+            },
+            paymentMethod: paymentMethod,
+            razorpayPaymentId: response.razorpay_payment_id,
+            razorpayOrderId: response.razorpay_order_id,
+          };
+
+          try {
+            await onPlaceOrder(newOrder);
+
+            try {
+              await fetch('/api/send-email', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  email: formData.email,
+                  customerName: formData.fullName,
+                  orderId: generatedId,
+                  status: 'Processing'
+                })
+              });
+            } catch (e) {
+              console.error("Email sending error", e);
+            }
+
+            setIsProcessing(false);
+            setIsDone(true);
+          } catch (err) {
+            console.error(err);
+            alert('Failed to save your order. Please contact support.');
+            setIsProcessing(false);
+          }
+        },
+        prefill: {
+          name: formData.fullName,
+          email: formData.email,
+          contact: formData.phone,
+        },
+        theme: {
+          color: '#3399cc',
+        },
+        modal: {
+          ondismiss: function () {
+            setIsProcessing(false);
+          }
+        }
+      };
+
+      const paymentObject = new (window as any).Razorpay(options);
+      paymentObject.open();
+    } catch (err) {
+      console.error(err);
+      alert('Error connecting to payment gateway.');
+      setIsProcessing(false);
+    }
   };
 
   const handleReturnToProfile = () => {

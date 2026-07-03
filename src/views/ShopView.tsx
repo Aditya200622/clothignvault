@@ -5,6 +5,7 @@ import { PRODUCTS, CATEGORIES } from '../data';
 import ProductCard from '../components/ProductCard';
 
 interface ShopViewProps {
+  products: Product[];
   wishlist: Product[];
   onWishlistToggle: (productId: string) => void;
   setCurrentTab: (tab: string) => void;
@@ -13,6 +14,7 @@ interface ShopViewProps {
 }
 
 export default function ShopView({
+  products,
   wishlist,
   onWishlistToggle,
   setCurrentTab,
@@ -43,7 +45,7 @@ export default function ShopView({
 
   // Filter & Sort Logic
   const filteredProducts = useMemo(() => {
-    let result = [...PRODUCTS];
+    let result = [...products];
 
     // Search query matches title or material or details
     if (searchQuery.trim() !== '') {

@@ -142,7 +142,7 @@ export default function CartView({
 
                     {/* Price and total */}
                     <p className="mt-2 text-xs sm:text-sm text-gray-900 font-mono font-black">
-                      ${item.product.price} <span className="text-[10px] text-gray-400 font-normal">/ unit</span>
+                      ₹{item.product.price} <span className="text-[10px] text-gray-400 font-normal">/ unit</span>
                     </p>
                   </div>
                 </div>
@@ -170,7 +170,7 @@ export default function CartView({
 
                   {/* Pricing status */}
                   <div className="text-right">
-                    <p className="font-mono text-sm sm:text-base font-black text-rose-600">${item.product.price * item.quantity}</p>
+                    <p className="font-mono text-sm sm:text-base font-black text-rose-600">₹{item.product.price * item.quantity}</p>
                     <button
                       onClick={() => onRemoveFromCart(item.product.id, item.selectedSize)}
                       className="inline-flex items-center space-x-1 text-[10px] text-rose-500 hover:text-rose-700 uppercase tracking-wider font-mono font-black mt-1 cursor-pointer"
@@ -223,13 +223,13 @@ export default function CartView({
               <div className="space-y-2.5 text-xs font-semibold text-gray-600">
                 <div className="flex justify-between">
                   <span>Bag Subtotal ({cartCount} styles)</span>
-                  <span className="font-mono text-gray-950">${subtotal}</span>
+                  <span className="font-mono text-gray-950">₹{subtotal}</span>
                 </div>
 
                 {couponDiscountPct > 0 && (
                   <div className="flex justify-between text-emerald-600 font-mono font-bold">
                     <span>Voucher Saved ({couponDiscountPct}%)</span>
-                    <span>-${discountAmount}</span>
+                    <span>-₹{discountAmount}</span>
                   </div>
                 )}
 
@@ -239,20 +239,20 @@ export default function CartView({
                     <HelpCircle className="h-3 w-3 text-gray-400"  />
                   </span>
                   <span className="font-mono text-gray-950">
-                    {shippingCost === 0 ? <b className="text-emerald-600 font-black">FREE OVER ₹150</b> : `$${shippingCost}`}
+                    {shippingCost === 0 ? <b className="text-emerald-600 font-black">FREE OVER ₹150</b> : `₹${shippingCost}`}
                   </span>
                 </div>
 
                 <div className="flex justify-between">
                   <span>PCI Encrypted Duties / Tax</span>
-                  <span className="font-mono text-gray-950">${taxCost}</span>
+                  <span className="font-mono text-gray-950">₹{taxCost}</span>
                 </div>
               </div>
 
               {/* Total Row */}
               <div className="pt-4 border-t border-rose-100 flex justify-between items-baseline font-bold">
                 <span className="font-display text-xs uppercase tracking-widest text-gray-950">Grand total</span>
-                <span className="font-mono text-lg sm:text-xl font-black text-rose-600">${grandTotal}</span>
+                <span className="font-mono text-lg sm:text-xl font-black text-rose-600">₹{grandTotal}</span>
               </div>
 
               {/* Secure Checkout trigger */}

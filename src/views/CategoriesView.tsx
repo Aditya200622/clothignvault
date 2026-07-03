@@ -18,9 +18,9 @@ export default function CategoriesView({ setCurrentTab, onCategorySelect }: Cate
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-20 page-enter-fade text-left">
       
       {/* Editorial Header */}
-      <div className="pb-8 border-b border-white/5 mb-12">
-        <span className="text-xs font-mono uppercase tracking-[0.25em] text-purple-400">Atelier Curations</span>
-        <h1 className="font-display font-medium text-3xl sm:text-4xl text-white mt-1">Design Chambers</h1>
+      <div className="pb-8 border-b border-rose-100 mb-12">
+        <span className="text-xs font-mono uppercase tracking-[0.25em] text-purple-600">Atelier Curations</span>
+        <h1 className="font-display font-medium text-3xl sm:text-4xl text-gray-950 mt-1">Design Chambers</h1>
         <p className="text-xs text-gray-500 font-light mt-2 max-w-md">
           Explore garments compiled under strict structural codes. Each chamber holds limited patterns of 150.
         </p>
@@ -79,14 +79,14 @@ export default function CategoriesView({ setCurrentTab, onCategorySelect }: Cate
       </div>
 
       {/* Decorative prompt card */}
-      <div className="mt-16 rounded-3xl bg-[#07070a] border border-white/5 p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+      <div className="mt-16 rounded-3xl bg-purple-50 border border-purple-200 p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
         <div className="space-y-1 sm:space-y-2">
-          <span className="text-xs text-purple-400 font-mono uppercase tracking-widest flex items-center space-x-1.5 justify-center sm:justify-start">
+          <span className="text-xs text-purple-600 font-mono uppercase tracking-widest flex items-center space-x-1.5 justify-center sm:justify-start">
             <Sparkles className="h-3.5 w-3.5 animate-pulse" />
             <span>Exclusive Membership Drops</span>
           </span>
-          <p className="text-sm font-display font-medium text-white">Looking for bespoke tailored styling assistance?</p>
-          <p className="text-xs text-gray-500 leading-normal max-w-lg font-light">
+          <p className="text-sm font-display font-medium text-gray-950">Looking for bespoke tailored styling assistance?</p>
+          <p className="text-xs text-gray-600 leading-normal max-w-lg font-light">
             Our atelier designers provide complimentary digital zoom silhouette fit counseling. Discover which sizes match your physique.
           </p>
         </div>

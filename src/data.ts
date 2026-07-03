@@ -1,262 +1,188 @@
 import { Product } from './types';
 
+// ─── Indian Women's Western Fashion Categories ───────────────────────────────
 export const CATEGORIES = [
   {
-    id: 'atelier-dresses',
-    name: 'Atelier Dresses',
-    description: 'Sculptical silhouettes, premium silk, and statement night-out gowns.',
+    id: 'dresses',
+    name: 'Dresses',
+    description: 'Elegant dresses for every occasion — from casual day-out to grand celebration.',
     image: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=800&auto=format&fit=crop',
     count: 14
   },
   {
-    id: 'luxury-streetwear',
-    name: 'Luxury Streetwear',
-    description: 'Oversized luxury hoodies, distress heavy cargo, and utility jackets.',
-    image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
+    id: 'co-ord-sets',
+    name: 'Co-ord Sets',
+    description: 'Perfectly matched co-ordinated sets that keep you effortlessly stylish.',
+    image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800&auto=format&fit=crop',
+    count: 10
+  },
+  {
+    id: 'tops',
+    name: 'Tops & Shirts',
+    description: 'Trendy tops and shirts crafted for the modern Indian woman.',
+    image: 'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800&auto=format&fit=crop',
     count: 18
   },
   {
-    id: 'minimal-knits',
-    name: 'Minimal Knits & Loungewear',
-    description: 'Cozy brushed cashmere, slouchy aesthetic cardigans, and premium lounge sets.',
-    image: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800&auto=format&fit=crop',
-    count: 12
-  },
-  {
-    id: 'tailored-outerwear',
-    name: 'Tailored Outerwear',
-    description: 'Heavy blazers, sharp shoulders, and double-breasted leather trench coats.',
+    id: 'blazers',
+    name: 'Blazers & Jackets',
+    description: 'Power dressing redefined — structured blazers for office and events.',
     image: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop',
-    count: 9
+    count: 8
   }
 ];
 
+// ─── Products ─────────────────────────────────────────────────────────────────
 export const PRODUCTS: Product[] = [
   {
-    id: 'v1-atelier-velvet',
-sku: 'CV-001',
-stock: 25,
+    id: 'v1-velvet-gown',
+    sku: 'CV-001',
+    stock: 25,
     name: 'Atelier Off-Shoulder Velvet Gown',
-    price: 380,
-    originalPrice: 450,
+    price: 3799,
+    originalPrice: 4499,
     rating: 4.9,
     reviewsCount: 34,
-    category: 'atelier-dresses',
+    category: 'dresses',
     tag: 'Trending',
     images: [
       'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop'
     ],
-    description: 'A masterpiece of structural tailoring. Features a sculpted sweetheart neck, heavy-bushed Italian silk velvet, and side ruched drapery that accents the hourglass silhouette. Meshki and House of CB inspired elegance.',
+    description: 'A masterpiece of structural tailoring. Features a sculpted sweetheart neck, heavy-brushed velvet, and side ruched drapery that accentuates the hourglass silhouette. Perfect for weddings, receptions, and premium soirées.',
     sizes: ['XS', 'S', 'M', 'L'],
     colors: [
       { name: 'Onyx Black', hex: '#0B0B0C' },
       { name: 'Royal Plum', hex: '#2E1A47' }
     ],
-    material: '80% heavy Italian velvet, 20% premium Mulberry silk lining.',
-    care: 'Dry clean only by luxury apparel specialist. Store on padded garment hangers.',
+    material: '80% heavy velvet, 20% premium satin lining.',
+    care: 'Dry clean only. Store on padded garment hangers.',
     details: [
       'Sculpted off-shoulder neckline with internal non-slip grip band',
       'Fully lined with buttery soft stretch satin',
       'Concealed ultra-glide back zipper closure',
-      'High-thigh elegant side split with hand-finished stitch lines'
+      'Elegant side split with hand-finished stitch lines'
     ],
     reviews: [
       {
         id: 'r1',
-        user: 'Elena Rostova',
+        user: 'Priya Sharma',
         rating: 5,
-        comment: 'Absolutely breathtaking! The structured corsetry inside holds everything beautifully. It literally screams luxury. Got endless compliments at the gala.',
+        comment: 'Wore this to my cousin\'s wedding reception. Got endless compliments! The velvet quality is absolutely top-notch.',
         date: '2026-05-12'
       },
       {
         id: 'r2',
-        user: 'Mia Thorne',
+        user: 'Nandini Menon',
         rating: 4.8,
-        comment: 'Beautiful silk lining. I ordered size S and fits like a glove. Note: has almost no stretch, so measure yourself accurately.',
+        comment: 'Beautiful lining. Ordered size S and fits like a glove. Size runs true — measure yourself accurately.',
         date: '2026-05-18'
       }
     ]
   },
   {
-    id: 'v2-cyber-street-hoodie',
-sku: 'CV-002',
-stock: 40,
-    name: 'Cybernetic Oversized Loop Hoodie',
-    price: 165,
-    rating: 4.8,
-    reviewsCount: 52,
-    category: 'luxury-streetwear',
-    tag: 'Oversized',
-    images: [
-      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1549064482-6779ba3292fe?q=80&w=800&auto=format&fit=crop'
-    ],
-    description: 'Engineered lounge street luxury. This hyper-heavyweight 520GSM French Terry hoodie features a modern crop-oversized boxy cut, seamless dropped shoulders, and subtle distressed metallic custom Vault rivets on the back collar.',
-    sizes: ['S', 'M', 'L', 'XL'],
-    colors: [
-      { name: 'Cyber Charcoal', hex: '#1C1B1F' },
-      { name: 'Neon Lavender', hex: '#63447F' },
-      { name: 'Chalk White', hex: '#F3F4F6' }
-    ],
-    material: '100% Organic Cotton French Terry, heavy fabric weight.',
-    care: 'Cold wash inside out. Air dry flat to maximize logo texture preservation.',
-    details: [
-      'Pre-shrunk and double garment-dyed for vintage look',
-      'Hidden seamless kangaroo pocket on waist side-seams',
-      'Double-ply hood without drawstring for minimal cyber presentation',
-      'Embossed signature tonal Vault monogram'
-    ],
-    reviews: [
-      {
-        id: 'r3',
-        user: 'Zara Kapoor',
-        rating: 5,
-        comment: 'So heavy! It is genuinely a premium streetwear weight. The lavender hue is subtle and extremely beautiful in natural lighting.',
-        date: '2026-04-20'
-      }
-    ]
-  },
-  {
     id: 'v3-lavender-slip',
-sku: 'CV-003',
-stock: 18,
-    name: 'Aura Silk Slip Dress in Lavender Glow',
-    price: 240,
-    originalPrice: 290,
+    sku: 'CV-002',
+    stock: 18,
+    name: 'Aura Satin Slip Midi Dress — Lavender',
+    price: 2399,
+    originalPrice: 2899,
     rating: 5.0,
     reviewsCount: 41,
-    category: 'atelier-dresses',
+    category: 'dresses',
     tag: 'New Arrival',
     images: [
       'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800&auto=format&fit=crop'
     ],
-    description: 'An elegant bias-cut silk slip dress glowing with light lavender undertones. Radiating luxury, it flows effortlessly down the figure, providing a celestial glow under ambient evening lounge lighting.',
+    description: 'An elegant bias-cut satin slip dress glowing with light lavender undertones. It flows effortlessly down the figure, ideal for cocktail parties, engagement functions, and date nights.',
     sizes: ['XS', 'S', 'M', 'L'],
     colors: [
       { name: 'Lavender Mist', hex: '#CBD5E1' },
       { name: 'Champagne Satin', hex: '#E2E8F0' }
     ],
-    material: '92% heavy silk satin, 8% Lycra for comfort-yielding stretch.',
+    material: '92% heavy satin, 8% Lycra for comfort stretch.',
     care: 'Delicate hand wash in cold water or dry clean. Low-steam only.',
     details: [
-      'Premium weight real silk bias-cut drape',
+      'Premium weight satin bias-cut drape',
       'Adjustable gold hardware strap slides',
-      'Double lined cowl bust line for absolute non-sheer security',
+      'Double lined cowl bust line for non-sheer security',
       'Mid-calf luxury midi length'
     ],
     reviews: [
       {
         id: 'r4',
-        user: 'Sophie Mercer',
+        user: 'Kavya Iyer',
         rating: 5,
-        comment: 'The quality of the silk is amazing. Not thin or see through like cheap dresses. Hugs the curves flawlessly.',
+        comment: 'The quality of the satin is amazing. Not thin or see-through. Hugs the curves flawlessly. Will order again!',
         date: '2026-05-01'
       }
     ]
   },
   {
-    id: 'v4-leather-trench',
-sku: 'CV-004',
-stock: 12,
-    name: 'Obsidian Hourglass Leather Trench Coat',
-    price: 520,
-    rating: 4.7,
-    reviewsCount: 19,
-    category: 'tailored-outerwear',
-    tag: 'New Arrival',
-    images: [
-      'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop'
-    ],
-    description: 'Inspired by metropolitan streetwear runways. Tailored with buttery-soft vegan PU leather, a wide lapel collar, and a signature chunky double belt that pinches the waist into a striking dramatic structural hourglass outline.',
-    sizes: ['S', 'M', 'L'],
-    colors: [
-      { name: 'Bespoke Onyx', hex: '#0B0B0C' },
-      { name: 'Espresso Glaze', hex: '#3E2723' }
-    ],
-    material: 'Exclusive ultra-soft polyurethane leather coat with full cupro lining.',
-    care: 'Wipe clean with a damp luxury microfiber cloth. Do not apply dry heat.',
-    details: [
-      'Deep functional button-flap side pockets',
-      'Padded sharp shoulders for strong structural presence',
-      'Satin-touch inner lining with signature Vault pattern',
-      'Removable extra-wide utility harness waist belt'
-    ],
-    reviews: [
-      {
-        id: 'r5',
-        user: 'Karolina W.',
-        rating: 4.9,
-        comment: 'This trench makes me feel like a literal matrix heroine. Stitches are perfect, and the PU synthetic leather is soft, not stiff.',
-        date: '2026-05-14'
-      }
-    ]
-  },
-  {
-    id: 'v5-cashmere-knit',
-sku: 'CV-005',
-stock: 20,
-    name: 'Clara Slouchy Cashmere Knit Cardigan Suite',
-    price: 295,
-    originalPrice: 350,
+    id: 'v8-sequin-party',
+    sku: 'CV-003',
+    stock: 25,
+    name: 'Midnight Sparkle Sequin Party Gown',
+    price: 3399,
+    originalPrice: 3950,
     rating: 4.9,
-    reviewsCount: 28,
-    category: 'minimal-knits',
+    reviewsCount: 45,
+    category: 'dresses',
     tag: 'Trending',
     images: [
-      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop'
+      'https://images.unsplash.com/photo-1549064482-6779ba3292fe?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop'
     ],
-    description: 'Unrivaled comfort meets high-end minimalism. Handknitted from Grade-A Mongolian cashmere with a high ribbed waistband and balloon-draped puff sleeves for cozy, yet curated style.',
-    sizes: ['S', 'M', 'L'],
+    description: 'A stellar dress for the modern Indian woman. Adorned with hand-stitched premium micro-sequins that catch and refract light beautifully. Perfect for sangeet, cocktail parties, and new year celebrations.',
+    sizes: ['XS', 'S', 'M', 'L'],
     colors: [
-      { name: 'Cozy Oatmeal', hex: '#D1CAAA' },
-      { name: 'Shadow Charcoal', hex: '#2D3748' }
+      { name: 'Midnight Purple Sequin', hex: '#4A148C' },
+      { name: 'Prism Black Sequin', hex: '#212121' }
     ],
-    material: '100% Pure Mongolian Cashmere, handspun yarn.',
-    care: 'Dry clean only or cold wash with specialty wool detergent. Lay flat on dry towel.',
+    material: 'Breathable micro-net base fabric with stitched glass sequins.',
+    care: 'Delicate hand soak only. Do not machine wash or wring.',
     details: [
-      'Thick chunky ribs with modern double knitted cuffs',
-      'Custom real horn logo buttons dyed to match fabric tone',
-      'Balloon drop silhouette for relaxed slouch look',
-      'Ultra breathable, thermally-insulating'
+      'Inner double-stretch cooling mesh jersey lining',
+      'Low plunging open backline with dainty thin supporting cords',
+      'Seamless flat heat-pressed hemlines',
+      'Stunning glitter response under party lights'
     ],
     reviews: [
       {
-        id: 'r6',
-        user: 'Aria Sinclair',
+        id: 'r9',
+        user: 'Simran Kaur',
         rating: 5,
-        comment: 'The softest thing in my wardrobe. Literally feels like wearing a cloud. Handwash took a while but worth keeping this cashmere perfect!',
-        date: '2026-05-11'
+        comment: 'Wore this at a sangeet function — looked absolutely stunning! The way it reflects light is just magical. True showstopper!',
+        date: '2026-05-19'
       }
     ]
   },
   {
-    id: 'v6-broad-blazer',
-sku: 'CV-006',
-stock: 16,
-    name: 'Bespoke Atelier Hourglass Blazer',
-    price: 310,
+    id: 'v6-power-blazer',
+    sku: 'CV-004',
+    stock: 16,
+    name: 'Power Dressing Hourglass Blazer',
+    price: 3099,
+    originalPrice: 3699,
     rating: 4.8,
     reviewsCount: 31,
-    category: 'tailored-outerwear',
+    category: 'blazers',
     tag: 'Trending',
     images: [
       'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop',
       'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop'
     ],
-    description: 'A sharp statement blazer designed for power dressing. Dramatic padded pagoda shoulders, custom gold hardware locks, and extreme tailored darts create an elegant and high-prestige hourglass look.',
+    description: 'A sharp statement blazer designed for power dressing. Dramatic padded shoulders, custom gold hardware, and extreme tailored darts create an elegant hourglass look — perfect for corporate boardrooms and premium events.',
     sizes: ['XS', 'S', 'M', 'L'],
     colors: [
       { name: 'Onyx Midnight', hex: '#111827' },
       { name: 'Monaco Cream', hex: '#F9FAFB' }
     ],
-    material: '62% luxury worsted wool, 35% polyester, 3% elastane lining.',
+    material: '62% worsted wool, 35% polyester, 3% elastane lining.',
     care: 'Professional dry clean only.',
     details: [
-      'Structured padded pagoda shoulders with internal canvas backing',
+      'Structured padded shoulders with internal canvas backing',
       'Satin shawl collar lapel with deep plunge chest angle',
       'Flapless pocket slits for clean structural modern look',
       'Sleeve cuff premium slits with working functional vents'
@@ -264,119 +190,200 @@ stock: 16,
     reviews: [
       {
         id: 'r7',
-        user: 'Valerie Pierce',
+        user: 'Ananya Verma',
         rating: 4.8,
-        comment: 'Unbelievable shoulder structure! It gives you immediate posture and status. The linen-wool blend has zero wrinkles.',
+        comment: 'Unbelievable shoulder structure! It gives you immediate confidence and presence. The wool blend has zero wrinkles.',
         date: '2026-05-02'
       }
     ]
   },
   {
-    id: 'v7-cargo-denim',
-    sku: 'CV-007',
-    stock: 30,
-    name: 'Distressed Heavy Utility Cargo Denim',
-    price: 185,
-    rating: 4.6,
-    reviewsCount: 22,
-    category: 'luxury-streetwear',
-    tag: 'Oversized',
+    id: 'v4-leather-trench',
+    sku: 'CV-005',
+    stock: 12,
+    name: 'Obsidian Hourglass Vegan Leather Jacket',
+    price: 5199,
+    originalPrice: 5999,
+    rating: 4.7,
+    reviewsCount: 19,
+    category: 'blazers',
+    tag: 'New Arrival',
     images: [
-      'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1549064482-6779ba3292fe?q=80&w=800&auto=format&fit=crop'
+      'https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop'
     ],
-    description: 'Urban luxury utility. Built with 14oz non-stretch Japanese selvedge denim, featuring extreme enzyme wash weathering, multi-pocket tactical utility cargo flaps, and dynamic adjust waist metal straps.',
-    sizes: ['24', '26', '28', '30'],
+    description: 'Crafted with buttery-soft vegan PU leather, a wide lapel collar, and a signature chunky double belt that pinches the waist into a striking hourglass outline. A statement piece for every fashion-forward woman.',
+    sizes: ['S', 'M', 'L'],
     colors: [
-      { name: 'Enzyme Mineral Wash', hex: '#6B7280' },
-      { name: 'Dust-Stained Violet', hex: '#4C1D95' }
+      { name: 'Bespoke Onyx', hex: '#0B0B0C' },
+      { name: 'Espresso Brown', hex: '#3E2723' }
     ],
-    material: '100% Selvedge Japanese Denim Cotton, heavy wash.',
-    care: 'Wash cold inside out. To maintain aesthetic distressing, avoid fabric softeners.',
+    material: 'Ultra-soft polyurethane vegan leather with full cupro lining.',
+    care: 'Wipe clean with a damp microfiber cloth. Do not apply dry heat.',
     details: [
-      'Heavy-duty ykk zipper with custom denim fly wrap button fastening',
-      'Utility tactical layout with 6 deep pocket systems',
-      'Dynamic velcro tab bottom cuffs for variable straight/taper fitting',
-      'Hand-distressed distress lines throughout thighs'
+      'Deep functional button-flap side pockets',
+      'Padded sharp shoulders for strong structural presence',
+      'Satin-touch inner lining with signature pattern',
+      'Removable wide utility waist belt'
     ],
     reviews: [
       {
-        id: 'r8',
-        user: 'Natasha D.',
-        rating: 4.7,
-        comment: 'Perfect oversized streetwear fit. Heavy weight denim draping on sneakers is ideal. Highly recommend adjusting the bottom tab!',
-        date: '2026-05-04'
+        id: 'r5',
+        user: 'Meghna Joshi',
+        rating: 4.9,
+        comment: 'This jacket is a showstopper! The stitching is perfect, and the PU leather is soft, not stiff at all. Love it!',
+        date: '2026-05-14'
       }
     ]
   },
   {
-    id: 'v8-sequin-mini',
-    sku: 'CV-008',
-    stock: 25,
-    name: 'Midnight Sparkle Sequin Silhouette Gown',
-    price: 340,
-    originalPrice: 395,
-    rating: 4.9,
-    reviewsCount: 45,
-    category: 'atelier-dresses',
-    tag: 'Trending',
+    id: 'v9-floraltop',
+    sku: 'CV-006',
+    stock: 30,
+    name: 'Bloom Floral Print Wrap Top',
+    price: 1299,
+    originalPrice: 1599,
+    rating: 4.6,
+    reviewsCount: 28,
+    category: 'tops',
+    tag: 'New Arrival',
     images: [
-      'https://images.unsplash.com/photo-1549064482-6779ba3292fe?q=80&w=800&auto=format&fit=crop',
-      'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop'
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1512436991641-6745cdb1723f?q=80&w=800&auto=format&fit=crop'
     ],
-    description: 'A stellar dress for VIP girls. Adorned with hand-stitched premium micro-sequins engineered to catch and refract light across purple, lavender and deep black spectra. Slip inside and glow on the VIP list.',
-    sizes: ['XS', 'S', 'M', 'L'],
+    description: 'A beautiful floral print wrap top that ties at the waist for a flattering fit. Ideal for brunch outings, office casual Fridays, and weekend getaways. Pairs beautifully with wide-leg trousers or jeans.',
+    sizes: ['XS', 'S', 'M', 'L', 'XL'],
     colors: [
-      { name: 'Midnight Purple Sequin', hex: '#4A148C' },
-      { name: 'Prism Black Sequin', hex: '#212121' }
+      { name: 'Pastel Pink Floral', hex: '#FBCFE8' },
+      { name: 'Ivory White', hex: '#FAFAF9' }
     ],
-    material: 'Breathable micro-net base fabric with 1000s of stitched glass sequins.',
-    care: 'Delicate hand soak only. Do not machine wash or squeeze.',
+    material: '100% breathable rayon crepe.',
+    care: 'Gentle machine wash cold or hand wash. Hang to dry.',
     details: [
-      'Inner double-stretch cooling mesh jersey lining',
-      'Low plunging open backline with dainty thin supporting cords',
-      'Seamless flat heat-pressed hemlines',
-      'Luxurious glitter response in dynamic night-club ambient states'
+      'Adjustable self-tie waist wrap for custom fit',
+      'V-neckline with subtle ruffle trim',
+      'Side seam pockets',
+      'Lightweight, perfect for Indian summers'
     ],
     reviews: [
       {
-        id: 'r9',
-        user: 'Jade Miller',
+        id: 'r10',
+        user: 'Riya Bhatia',
+        rating: 4.7,
+        comment: 'So pretty! The fabric is super soft and the fit is very flattering. I wore this for a brunch and got many compliments.',
+        date: '2026-06-01'
+      }
+    ]
+  },
+  {
+    id: 'v10-coordset',
+    sku: 'CV-007',
+    stock: 20,
+    name: 'Sage Linen Co-ord Set — Crop Top & Trousers',
+    price: 2799,
+    originalPrice: 3299,
+    rating: 4.8,
+    reviewsCount: 36,
+    category: 'co-ord-sets',
+    tag: 'Trending',
+    images: [
+      'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=800&auto=format&fit=crop'
+    ],
+    description: 'A stunning sage linen co-ord set featuring a cropped buttoned top and wide-leg trousers with an elasticated waist. The ultimate effortless outfit for brunches, casual outings, and travel. Breathable linen keeps you cool all day.',
+    sizes: ['XS', 'S', 'M', 'L'],
+    colors: [
+      { name: 'Sage Green', hex: '#84A98C' },
+      { name: 'Dusty Rose', hex: '#D4A5A5' }
+    ],
+    material: '100% premium washed linen.',
+    care: 'Machine wash cold, gentle cycle. Iron on medium heat while slightly damp.',
+    details: [
+      'Cropped top with mother-of-pearl buttons',
+      'Wide-leg trousers with elasticated waistband',
+      'Sold as a set — mix and match separately',
+      'Pre-washed for softness, minimal shrinkage'
+    ],
+    reviews: [
+      {
+        id: 'r11',
+        user: 'Shruti Patel',
         rating: 5,
-        comment: 'This dress is literally insane. The way it reflects purple and gold glint in the club is just... expensive. True showstopper!',
-        date: '2026-05-19'
+        comment: 'Best purchase! The sage colour is so beautiful and the linen quality is premium. Wore it for a family gathering and felt amazing!',
+        date: '2026-06-05'
+      }
+    ]
+  },
+  {
+    id: 'v11-shirttop',
+    sku: 'CV-008',
+    stock: 22,
+    name: 'Classy Striped Oversized Shirt',
+    price: 1599,
+    originalPrice: 1999,
+    rating: 4.5,
+    reviewsCount: 24,
+    category: 'tops',
+    tag: 'New Arrival',
+    images: [
+      'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop',
+      'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=800&auto=format&fit=crop'
+    ],
+    description: 'A classic oversized striped shirt that can be worn as a top, thrown over a dress, or knotted at the waist. Versatile, breezy, and incredibly chic — your new wardrobe staple.',
+    sizes: ['S', 'M', 'L', 'XL'],
+    colors: [
+      { name: 'Classic Navy Stripe', hex: '#1E3A5F' },
+      { name: 'Soft Blush Stripe', hex: '#F4A7B9' }
+    ],
+    material: '100% cotton poplin.',
+    care: 'Machine wash warm. Tumble dry low. Iron if needed.',
+    details: [
+      'Relaxed oversized fit with dropped shoulders',
+      'Long sleeves with button cuffs — can roll up',
+      'Full button placket front',
+      'Split hem for style versatility'
+    ],
+    reviews: [
+      {
+        id: 'r12',
+        user: 'Tanya Malhotra',
+        rating: 4.5,
+        comment: 'Such a versatile piece! I wear it as a beach cover-up, then knot it as a top. Great quality cotton.',
+        date: '2026-06-10'
       }
     ]
   }
 ];
 
+// ─── Testimonials ─────────────────────────────────────────────────────────────
 export const TESTIMONIALS = [
   {
     id: 't1',
-    user: 'Cassandra Sterling',
-    role: 'Fashion Stylist & Model',
-    quote: "ClothingVault has revolutionized my luxury streetwear wardrobe. The heavy 520GSM hoodies and tailoring rival high-tier Milan fashion houses, but with an edgy western aesthetic that speaks to this generation.",
+    user: 'Diya Kapoor',
+    role: 'Fashion Stylist, Mumbai',
+    quote: "ClothingVault has completely transformed my wardrobe. The quality of the dresses and co-ord sets rivals premium boutiques in Bandra, but at a fraction of the price. Every piece I\'ve ordered has been absolutely stunning!",
     avatar: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=300&auto=format&fit=crop',
     rating: 5
   },
   {
     id: 't2',
-    user: 'Victoria Chen',
-    role: 'Creative Director',
-    quote: "The styling, fast checkout, and absolute weight of the materials from ClothingVault are masterclass levels. The dark purple and deep black styling details in the Atelier dresses make every unboxing feel like a boutique opening.",
+    user: 'Ritika Singhania',
+    role: 'Entrepreneur & Influencer, Delhi',
+    quote: "The packaging, the fabric quality, and the overall experience is world-class. I ordered the velvet gown for my best friend\'s wedding and it was a showstopper! Delivery was also super fast — 2 days!",
     avatar: 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=300&auto=format&fit=crop',
     rating: 5
   },
   {
     id: 't3',
-    user: 'Giselle Laurent',
-    role: 'VIP Digital Influencer',
-    quote: "They really nailed modern luxury fits. Streetwear pants that don't bunch, slips that drape like liquid wine, and customer service that answers under an hour. Outstanding luxury shopping experience.",
+    user: 'Pooja Nair',
+    role: 'Content Creator, Bengaluru',
+    quote: "Finally a brand that understands the modern Indian woman\'s sense of style. The linen co-ord set I ordered fits like a dream and the customer service responded under an hour. Outstanding experience!",
     avatar: 'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?q=80&w=300&auto=format&fit=crop',
     rating: 5
   }
 ];
 
+// ─── Instagram Posts ──────────────────────────────────────────────────────────
 export const INSTAGRAM_POSTS = [
   { id: 'i1', url: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=400&auto=format&fit=crop', likes: '1.4k' },
   { id: 'i2', url: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=400&auto=format&fit=crop', likes: '2.5k' },

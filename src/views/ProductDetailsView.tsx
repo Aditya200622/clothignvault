@@ -8,6 +8,7 @@ import SizeGuideModal from '../components/SizeGuideModal';
 
 interface ProductDetailsViewProps {
   key?: React.Key;
+  products: Product[];
   productId: string;
   wishlist: Product[];
   onWishlistToggle: (productId: string) => void;
@@ -19,6 +20,7 @@ interface ProductDetailsViewProps {
 }
 
 export default function ProductDetailsView({
+  products,
   productId,
   wishlist,
   onWishlistToggle,
@@ -30,8 +32,8 @@ export default function ProductDetailsView({
 }: ProductDetailsViewProps) {
   // Find current product in state/data
   const product = useMemo(() => {
-    return PRODUCTS.find(p => p.id === productId) || PRODUCTS[0];
-  }, [productId]);
+    return products.find(p => p.id === productId) || products[0] || PRODUCTS[0];
+  }, [productId, products]);
 
   // Gallery Index state
   const [activeImgIdx, setActiveImgIdx] = useState(0);
@@ -54,8 +56,8 @@ export default function ProductDetailsView({
 
   // Related products (from same category, excluding active product)
   const relatedProducts = useMemo(() => {
-    return PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3);
-  }, [product]);
+    return products.filter(p => p.category === product?.category && p.id !== product?.id).slice(0, 3);
+  }, [product, products]);
 
   const handleQtyChange = (change: number) => {
     const nextQty = quantity + change;
@@ -151,11 +153,11 @@ export default function ProductDetailsView({
             <div className="flex items-baseline space-x-3.5 mt-2">
               <span className="text-xl sm:text-2xl font-black text-rose-600 font-mono">₹{product.price}</span>
               {product.originalPrice && (
-                <span className="text-sm text-gray-400 line-through font-mono">₹s{product.originalPrice}</span>
+                <span className="text-sm text-gray-400 line-through font-mono">₹{product.originalPrice}</span>
               )}
               {product.originalPrice && (
                 <span className="text-[10px] uppercase font-black text-rose-500 font-mono bg-rose-50 px-2.5 py-1 rounded-sm border border-rose-100">
-                  Save ${product.originalPrice - product.price}
+                  Save ₹{product.originalPrice - product.price}
                 </span>
               )}
             </div>

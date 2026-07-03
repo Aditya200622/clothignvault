@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import FashionShowcase from '../components/FashionShowcase';
 
 interface HomeViewProps {
+  products: Product[];
   setCurrentTab: (tab: string) => void;
   setSelectedProductId: (id: string) => void;
   wishlist: Product[];
@@ -14,6 +15,7 @@ interface HomeViewProps {
 }
 
 export default function HomeView({
+  products,
   setCurrentTab,
   setSelectedProductId,
   wishlist,
@@ -37,28 +39,28 @@ export default function HomeView({
 
   // Map category tab selection to product types or mocked catalogs for a lively display
   const getFilteredProducts = () => {
-    if (selectedCategory === 'All') return PRODUCTS;
+    if (selectedCategory === 'All') return products;
     // Map internal categories
     if (selectedCategory === 'atelier-dresses') {
-      return PRODUCTS.filter(p => p.category === 'atelier-dresses' || p.name.includes('Dress') || p.name.includes('Gown'));
+      return products.filter(p => p.category === 'atelier-dresses' || p.name.includes('Dress') || p.name.includes('Gown'));
     }
     if (selectedCategory === 'luxury-streetwear') {
-      return PRODUCTS.filter(p => p.category === 'luxury-streetwear' || p.name.includes('Hoodie') || p.name.includes('T-shirt') || p.name.includes('Knit'));
+      return products.filter(p => p.category === 'luxury-streetwear' || p.name.includes('Hoodie') || p.name.includes('T-shirt') || p.name.includes('Knit'));
     }
     if (selectedCategory === 'denim') {
-      return PRODUCTS.filter(p => p.category === 'luxury-streetwear' && (p.name.includes('Denim') || p.name.includes('Cargo') || p.name.includes('Pants')));
+      return products.filter(p => p.category === 'luxury-streetwear' && (p.name.includes('Denim') || p.name.includes('Cargo') || p.name.includes('Pants')));
     }
     if (selectedCategory === 'tailored-outerwear') {
-      return PRODUCTS.filter(p => p.category === 'tailored-outerwear' || p.name.includes('Blazer'));
+      return products.filter(p => p.category === 'tailored-outerwear' || p.name.includes('Blazer'));
     }
     if (selectedCategory === 'coats') {
-      return PRODUCTS.filter(p => p.name.includes('Trench') || p.name.includes('Coat') || p.category === 'tailored-outerwear');
+      return products.filter(p => p.name.includes('Trench') || p.name.includes('Coat') || p.category === 'tailored-outerwear');
     }
     if (selectedCategory === 'shoes') {
       // Just supply a few products to present interactive responsiveness
-      return PRODUCTS.slice(2, 6);
+      return products.slice(2, 6);
     }
-    return PRODUCTS;
+    return products;
   };
 
   const filteredProducts = getFilteredProducts().slice(0, 8); // Showing top 8 cards corresponding to reference layout structure
@@ -80,27 +82,27 @@ export default function HomeView({
       action: 'shop'
     },
     {
-      title: 'Children Fashion',
+      title: 'Tops & Shirts',
       bgColor: 'bg-[#FEF08A]', // Amber-100 tint
       textColor: 'text-amber-900',
       btnText: 'Explore',
-      image: 'https://images.unsplash.com/photo-1503919545889-aef636e10ad4?q=80&w=400&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=400&auto=format&fit=crop', // Woman in t-shirt/top
       action: 'shop'
     },
     {
-      title: "Men's Fashion",
+      title: "Co-ord Sets",
       bgColor: 'bg-[#F2E8E5]', // Grayish rose
       textColor: 'text-neutral-800',
       btnText: 'View Series',
-      image: 'https://images.unsplash.com/photo-1488161628813-04466f872be2?q=80&w=400&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1509631179647-0c77290973e0?q=80&w=400&auto=format&fit=crop', // Woman in matching outfit
       action: 'shop'
     },
     {
-      title: "Women's Fashion",
+      title: "Party Wear",
       bgColor: 'bg-[#E5D5C5]', // Brownish cream
       textColor: 'text-[#5C4033]',
       btnText: 'Curated Look',
-      image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop',
+      image: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=400&auto=format&fit=crop', // Woman dressed up
       action: 'shop'
     }
   ];

@@ -26,9 +26,9 @@ export default function ContactView() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-20 text-left page-enter-fade">
       
       {/* Page Header */}
-      <div className="pb-8 border-b border-white/5 mb-12">
-        <span className="text-xs font-mono uppercase tracking-[0.25em] text-purple-400">Concierge Desk</span>
-        <h1 className="font-display font-medium text-3xl sm:text-4xl text-white mt-1">Contact The Vault</h1>
+      <div className="pb-8 border-b border-rose-100 mb-12">
+        <span className="text-xs font-mono uppercase tracking-[0.25em] text-purple-600">Concierge Desk</span>
+        <h1 className="font-display font-medium text-3xl sm:text-4xl text-gray-950 mt-1">Contact The Vault</h1>
         <p className="text-xs text-gray-500 font-light mt-2 max-w-sm">
           Have an inquiry regarding sizing, deliveries, or private preview drops? Speak to our concierge.
         </p>
@@ -138,9 +138,9 @@ export default function ContactView() {
               <div className="flex items-start space-x-3 text-xs text-gray-400">
                 <MapPin className="h-5 w-5 text-purple-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-display font-semibold text-white">Kaveri Garments</h4>
-                  <p className="mt-1">Laxmi nagar, Delhi</p>
-                  <p>Beverly Hills, CA 90210</p>
+                  <h4 className="font-display font-semibold text-white">ClothingVault Flagship</h4>
+                  <p className="mt-1">Shop No. 12, Sarojini Nagar Market</p>
+                  <p>New Delhi, India</p>
                   <div className="flex items-center space-x-2 mt-1.5 text-purple-300 font-mono text-[10px]">
                     <Phone className="h-3 w-3" />
                     <span>+91 8447928772</span>
@@ -150,16 +150,14 @@ export default function ContactView() {
 
               <div className="h-px bg-white/5 max-w-sm" />
 
-              {/* Showroom 2 */}
+              {/* Support Email */}
               <div className="flex items-start space-x-3 text-xs text-gray-400">
-                <MapPin className="h-5 w-5 text-purple-400 flex-shrink-0 mt-0.5" />
+                <Mail className="h-5 w-5 text-purple-400 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-display font-semibold text-white">London Atelier Chamber</h4>
-                  <p className="mt-1">45 Savile Row, Mayfair</p>
-                  <p>London W1S 3PG, United Kingdom</p>
+                  <h4 className="font-display font-semibold text-white">Digital Concierge Support</h4>
+                  <p className="mt-1">Available for styling and order inquiries</p>
                   <div className="flex items-center space-x-2 mt-1.5 text-purple-300 font-mono text-[10px]">
-                    <Phone className="h-3 w-3" />
-                    <span>+44 20 7946 0958</span>
+                    <span>clothingvaultcare@gmail.com</span>
                   </div>
                 </div>
               </div>

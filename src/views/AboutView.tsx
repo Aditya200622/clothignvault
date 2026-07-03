@@ -5,9 +5,9 @@ export default function AboutView() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-20 text-left page-enter-fade">
       
       {/* 1. HEADER */}
-      <div className="pb-8 border-b border-white/5 mb-12">
-        <span className="text-xs font-mono uppercase tracking-[0.25em] text-purple-400">Brand Manifesto</span>
-        <h1 className="font-display font-medium text-3xl sm:text-4xl text-white mt-1">The ClothingVault Heritage</h1>
+      <div className="pb-8 border-b border-rose-100 mb-12">
+        <span className="text-xs font-mono uppercase tracking-[0.25em] text-purple-600">Brand Manifesto</span>
+        <h1 className="font-display font-medium text-3xl sm:text-4xl text-gray-950 mt-1">The ClothingVault Heritage</h1>
         <p className="text-xs text-gray-500 font-light mt-2 max-w-sm">
           A study in modern western silhouette prestige, limited runs, and uncompromising textiles.
         </p>
@@ -18,21 +18,21 @@ export default function AboutView() {
         
         {/* Left text column */}
         <div className="lg:col-span-6 space-y-6">
-          <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-purple-950/30 border border-purple-500/15">
-            <Sparkles className="h-3.5 w-3.5 text-purple-400 animate-pulse" />
-            <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-purple-200">The 150-Piece Vault Covenant</span>
+          <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-purple-50 border border-purple-200">
+            <Sparkles className="h-3.5 w-3.5 text-purple-600 animate-pulse" />
+            <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-purple-800">The 150-Piece Vault Covenant</span>
           </div>
 
-          <h2 className="font-display font-bold text-2xl sm:text-3xl text-white tracking-wide leading-tight">
+          <h2 className="font-display font-bold text-2xl sm:text-3xl text-gray-950 tracking-wide leading-tight">
             Restricted blueprints. Hand-stamped serial indexes. Zero dilution.
           </h2>
 
-          <p className="text-xs sm:text-sm text-gray-400 font-light leading-relaxed">
+          <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
             ClothingVault was founded with a singular, quiet objective: to deliver high-tier, structural garments to girls aged 16-30 without resorting to mass-market dilution. 
           </p>
 
-          <p className="text-xs sm:text-sm text-gray-400 font-light leading-relaxed">
-            Every dress, trench, or knit set is strictly capped at <strong className="text-white font-mono">150 pieces worldwide</strong>. Once a drop sells out, the blueprint is permanently locked inside our physical archives. There are no restocks, no revisions, and no compromises. You own an item of certified status.
+          <p className="text-xs sm:text-sm text-gray-600 font-light leading-relaxed">
+            Every dress, trench, or knit set is strictly capped at <strong className="text-gray-950 font-mono">150 pieces worldwide</strong>. Once a drop sells out, the blueprint is permanently locked inside our physical archives. There are no restocks, no revisions, and no compromises. You own an item of certified status.
           </p>
         </div>
 
@@ -53,8 +53,8 @@ export default function AboutView() {
       {/* 3. MATERIAL CRITERIAS BENTO GRID */}
       <div className="space-y-6 mb-16">
         <div className="text-center sm:text-left">
-          <span className="text-xs font-mono uppercase tracking-widest text-purple-400">Atelier specifications</span>
-          <h3 className="font-display font-medium text-lg sm:text-xl text-white mt-1">Our Material Criterias</h3>
+          <span className="text-xs font-mono uppercase tracking-widest text-purple-600">Atelier specifications</span>
+          <h3 className="font-display font-medium text-lg sm:text-xl text-gray-950 mt-1">Our Material Criterias</h3>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -85,7 +85,7 @@ export default function AboutView() {
             </div>
             <h4 className="font-display font-semibold text-white text-sm tracking-wide">Structured Pagoda Shoulders</h4>
             <p className="text-xs text-gray-400 leading-relaxed font-light font-sans">
-              Blazers and heavy leather trenches combine canvas backing and internal pagoda cushions. This structural tailoring creates high posture confidence, mimicking classic 1980s Paris and Milan runways.
+              Blazers and heavy leather trenches combine canvas backing and internal pagoda cushions. This structural tailoring creates high posture confidence, mimicking modern luxury aesthetics.
             </p>
           </div>
 
@@ -97,7 +97,7 @@ export default function AboutView() {
         <Sparkles className="h-6 w-6 text-purple-400 mx-auto animate-pulse" />
         <h4 className="font-display font-semibold text-base text-white">Ethical Handcraft Manufacturing</h4>
         <p className="text-xs text-gray-400 leading-relaxed font-light max-w-xl mx-auto">
-          We reject fast-fashion waste. Our localized design studios in Beverly Hills, London and Rome pay 1.5x livable wages to local master tailors. By producing only 150 pieces per style, we maintain zero inventory landfill deposits, fully dedicating carbon coordinates to priority express logistics offsets.
+          We reject fast-fashion waste. Our localized design studios in New Delhi and Mumbai pay 1.5x livable wages to local master tailors. By producing only 150 pieces per style, we maintain zero inventory landfill deposits, fully dedicating carbon coordinates to priority express logistics offsets.
         </p>
       </div>
 

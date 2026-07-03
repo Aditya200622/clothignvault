@@ -16,7 +16,7 @@ interface CampaignItem {
 const CAMPAIGN_ITEMS: CampaignItem[] = [
   {
     id: "01",
-    tag: "Paris Runway",
+    tag: "Mumbai Runway",
     title: "Atelier Seams",
     subtitle: "STRICTLY CAPPED LOOKBOOK NO: 1",
     desc: "A bold collision of classic French tailoring and modern structural presence. Handcrafted using high-density organic linen and woven fibers.",
@@ -26,7 +26,7 @@ const CAMPAIGN_ITEMS: CampaignItem[] = [
   },
   {
     id: "02",
-    tag: "Milan Atelier",
+    tag: "Delhi Studio",
     title: "Satin Solace",
     subtitle: "SCULPTURAL SHEENS",
     desc: "Sculptured drapery designed to mirror twilight movement. Reflects ambient light with custom metallic highlights woven organically at the bodice.",
@@ -36,10 +36,10 @@ const CAMPAIGN_ITEMS: CampaignItem[] = [
   },
   {
     id: "03",
-    tag: "London Streets",
+    tag: "Bengaluru Connect",
     title: "Oversized Apex",
     subtitle: "NEO-URBAN GRIT",
-    desc: "Heavyweight premium streetwear crafted from premium 460GSM loopback cotton. Inspired by the sharp geometry of London architectural corners.",
+    desc: "Heavyweight premium streetwear crafted from premium 460GSM loopback cotton. Inspired by the sharp geometry of modern Indian architectural corners.",
     image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop",
     year: "Atelier '26",
     glow: "from-rose-600/20 to-[#E11D48]/5",
@@ -139,18 +139,19 @@ export default function FashionShowcase({ setCurrentTab }: FashionShowcaseProps)
             className="flex space-x-8 sm:space-x-16 items-center pl-4 pr-16"
           >
             {/* Introductory Statement Panel Card */}
-            <div className="w-[85vw] sm:w-[500px] flex-shrink-0 text-left space-y-6 pr-4 sm:pr-12">
-              <span className="text-[10px] font-mono bg-white/5 border border-white/10 text-rose-300 uppercase px-3.5 py-1.5 rounded-full inline-block font-black leading-none tracking-widest">
-                LOOKBOOK COVENANT
+            <div className="flex-shrink-0 w-[85vw] sm:w-[350px] flex flex-col justify-center space-y-6 px-4">
+              <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-rose-500 font-bold border border-rose-500/20 bg-rose-500/10 px-3 py-1.5 rounded-full w-fit">
+                Cinematic Layout
               </span>
-              <h2 className="font-display font-black text-4xl sm:text-6xl text-white uppercase tracking-tight leading-[0.95]">
-                CAMP <br />
-                <span className="text-rose-500 font-serif italic font-light lowercase">de</span> <br />
-                COUTURE
+              <h2 className="font-display font-black text-4xl sm:text-5xl lg:text-6xl text-gray-950 leading-none uppercase tracking-tight">
+                Visual<br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-rose-700">
+                  Chronicles
+                </span>
               </h2>
               <div className="h-[1px] w-24 bg-rose-500" />
               <p className="text-xs sm:text-sm text-stone-400 font-medium leading-relaxed max-w-sm">
-                Scroll vertically to reveal our exclusive cinematic fashion campaigns. Each layout is captured directly in our Milan studio utilizing real tailored aesthetics.
+                Scroll vertically to reveal our exclusive cinematic fashion campaigns. Each layout is captured directly in our Delhi studio utilizing real tailored aesthetics.
               </p>
               <div className="flex items-center space-x-2 text-[10px] font-mono text-stone-500 tracking-wider animate-pulse flex-nowrap shrink-0">
                 <span>SCROLL DOWN</span>
@@ -191,7 +192,7 @@ export default function FashionShowcase({ setCurrentTab }: FashionShowcaseProps)
                     <span className="text-[10px] font-mono text-stone-400 tracking-[0.25em] block uppercase font-bold">
                       {item.subtitle}
                     </span>
-                    <h3 className="font-display font-black text-2xl sm:text-4xl leading-none text-white uppercase tracking-tight">
+                    <h3 className="font-display font-black text-2xl sm:text-4xl leading-none text-white uppercase tracking-tight inline-block bg-[rgba(255,235,242,0.15)] backdrop-blur-sm rounded-lg px-2 py-1 -ml-2">
                       {item.title}
                     </h3>
                   </div>
