@@ -1,14 +1,23 @@
 import { auth } from './firebase/firebase';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://clothingvault-backend.onrender.com/api";
 
-const getAuthHeaders = async () => {
+const getAuthHeaders = async (): Promise<Record<string, string>> => {
   const user = auth.currentUser;
-  if (!user) return {};
+
+  if (!user) {
+    return {
+      "Content-Type": "application/json",
+    };
+  }
+
   const token = await user.getIdToken();
+
   return {
-    'Authorization': `Bearer ${token}`,
-    'Content-Type': 'application/json'
+    Authorization: `Bearer ${token}`,
+    "Content-Type": "application/json",
   };
 };
 

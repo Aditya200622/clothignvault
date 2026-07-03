@@ -6,7 +6,15 @@ const app = express();
 
 // Security and middleware
 app.use(helmet());
-app.use(cors({ origin: process.env.FRONTEND_URL || '*' }));
+app.use(cors({
+  origin: [
+    "https://clothingvault.in",
+    "https://www.clothingvault.in",
+    "http://localhost:3000",
+    "http://localhost:5173"
+  ],
+  credentials: true
+}));
 app.use(express.json());
 
 // Basic health check
