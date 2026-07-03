@@ -1,27 +1,37 @@
-const admin = require('firebase-admin');
-const dotenv = require('dotenv');
-
+const dotenv = require("dotenv");
 dotenv.config();
 
-// Assuming service account is passed via base64 env var or standard FIREBASE_CONFIG in production
-// In local dev, you would load a serviceAccountKey.json
-let serviceAccount;
+const { initializeApp, cert, applicationDefault, getApps } = require("firebase-admin/app");
+const { getFirestore } = require("firebase-admin/firestore");
+const { getAuth } = require("firebase-admin/auth");
+
+let serviceAccount = null;
+
 try {
   if (process.env.FIREBASE_SERVICE_ACCOUNT_BASE64) {
-    const buff = Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT_BASE64, 'base64');
-    serviceAccount = JSON.parse(buff.toString('utf-8'));
+    const decoded = Buffer.from(
+      process.env.FIREBASE_SERVICE_ACCOUNT_BASE64,
+      "base64"
+    ).toString("utf8");
+
+    serviceAccount = JSON.parse(decoded);
   }
-} catch (error) {
-  console.warn('Failed to parse FIREBASE_SERVICE_ACCOUNT_BASE64', error);
+} catch (err) {
+  console.warn("Failed to parse FIREBASE_SERVICE_ACCOUNT_BASE64:", err.message);
 }
 
-if (!admin.apps.length) {
-  admin.initializeApp({
-    credential: serviceAccount ? admin.credential.cert(serviceAccount) : admin.credential.applicationDefault()
+if (!getApps().length) {
+  initializeApp({
+    credential: serviceAccount
+      ? cert(serviceAccount)
+      : applicationDefault(),
   });
 }
 
-const db = admin.firestore();
-const auth = admin.auth();
+const db = getFirestore();
+const auth = getAuth();
 
-module.exports = { admin, db, auth };
+module.exports = {
+  db,
+  auth,
+};
